@@ -6,9 +6,9 @@ function App() {
 
   let location = useLocation();
   const transitions = useTransition(location, {
-    from: { opacity: 0, x: -600 },
+    from: { opacity: 0, x: -500 },
     enter: { opacity: 1, x: 0,  },
-    leave: { opacity: 0, x: 600, },
+    leave: { opacity: 0, x: 500, },
     config: config.molasses,
   }
   )
@@ -71,7 +71,7 @@ export const HoursPage = () => {
 
 export const CityPage = () => {
   return (
-    <div style={{ background: 'lightgreen' }}>
+    <div style={{ background: 'lightgreen', height: '100%' }}>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, deserunt adipisci porro iure quo harum eveniet sint? Ipsa, quasi distinctio. Ullam odit aperiam facere est sint sunt debitis, illum cumque voluptas corporis cupiditate quo voluptatum dolores soluta illo, error dignissimos atque id libero in temporibus! Consectetur doloremque dolorem, in beatae ipsam impedit suscipit tempore? Quam, consequuntur repudiandae, cum consectetur et sunt qui tempore ad officia dolor nisi? Minima eveniet nesciunt excepturi aliquid architecto quos iusto, officia sequi ipsum placeat. Quod officia vero laboriosam sint illum deleniti voluptatibus quibusdam enim dicta quaerat repellat culpa odit, similique repudiandae error voluptatem impedit expedita!</p>
     </div>
   )
