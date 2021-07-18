@@ -1,8 +1,28 @@
-$color1 : #3c423a;
-$color2 : #939482;
-$color3 : #d0d7bf;
-$color-bg : #d0d7bf;
+$color1: #3c423a;
+$color2: #939482;
+$color3: #d0d7bf;
+$color-bg: #d0d7bf;
+$menu-bar-width: 80px;
 
-$font_paragraph : sans-serif;
+@font-face {
+  font-family: "Segoe WP";
+  font-style: normal;
+  font-weight: normal;
+  //src: local("Segoe WP"), url("SegoeWP.woff") format("woff");
+  src: url("SegoeWP.woff") format("woff");
+}
+@font-face {
+  font-family: "Segoe WP bold";
+  font-style: normal;
+  font-weight: normal;
+  //src: local("Segoe WP"), url("SegoeWP.woff") format("woff");
+  src: url("SegoeWP-Bold.woff") format("woff");
+}
+$font_paragraph: 'Segoe WP';
+$label_card: 'Segoe WP bold';
 
-$menu-bar-width : 80px;
+
+
+/** TEXT ****/
+
+$txt-filter:1.111rem;
