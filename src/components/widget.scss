@@ -1,0 +1,43 @@
+@import "../variables";
+
+.widget-temp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+.widget-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.temp {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  .number {
+    font-size: 9.51rem;
+    color: $color1;
+    font-weight: bold;
+    letter-spacing: -10px;
+    font-family: $label_card;
+  }
+  .grade {
+    font-size: 5.87rem;
+    color: $color2;
+    font-weight: bold;
+    font-family: $label_card;
+    margin-top: 20px;
+    letter-spacing:-5px ;
+  }
+}
+
+.label {
+  font-size: 1.87rem;
+  color: $color2;
+  font-family: $label_card;
+}
