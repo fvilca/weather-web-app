@@ -1,5 +1,5 @@
 import React from 'react'
-import sunny from '../images/sunny.svg'
+import sunny from '../images/day_sunny.svg'
 import './card.scss'
 
 export default function Card() {
