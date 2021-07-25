@@ -1,16 +1,14 @@
 import './App.scss';
-import { NavLink, Switch, Route, useLocation } from 'react-router-dom'
-import { useTransition, a, config } from 'react-spring'
-import logo from './images/logo.svg'
-import HomePage from './HomePage/HomePage';
+//import { Switch, Route, useLocation } from 'react-router-dom'
+//import { useTransition, a, config } from 'react-spring'
+//import logo from './images/logo.svg'
+//import HomePage from './HomePage/HomePage';
+import MenuBar from './components/MenuBar';
 
 function App() {
 
-  let location = useLocation();
+  /*let location = useLocation();
   const transitions = useTransition(location, {
-    /*from: { opacity: 0, x: -500 },
-    enter: { opacity: 1, x: 0, },
-    leave: { opacity: 0, x: 500, },*/
     from: { opacity: 0, },
     enter: { opacity: 1, },
     leave: { opacity: 0, },
@@ -19,39 +17,14 @@ function App() {
       duration: 400,
     }
   }
-  )
+  )*/
 
   return (
     <>
-      <nav id="menu-bar">
 
-        <div className="menu-item">
-          <NavLink exact activeClassName='current'
-            to='/'>
-            <div className="menu-icon" />
-            inicio
-          </NavLink>
-        </div>
+      <MenuBar />
 
-        <div className="menu-item">
-          <NavLink exact activeClassName='current'
-            to='/hours'>
-            <div className="menu-icon" />
-            horas
-          </NavLink>
-        </div>
-        <div className="menu-item">
-          <NavLink exact activeClassName='current'
-            to='/city'>
-            <div className="menu-icon" />
-            mapas
-          </NavLink>
-        </div>
-
-
-      </nav>
-
-      <header id="filter-bar">
+      {/*<header id="filter-bar">
 
 
         <div className="filter">
@@ -81,8 +54,8 @@ function App() {
 
         <div className="filter">
           <svg
-            width="17.97" 
-            height="19.967" 
+            width="17.97"
+            height="19.967"
             viewBox="0 0 20 20">
             <path id="Icon_material-date-range" data-name="Icon material-date-range" d="M10.49,11.985h-2v2h2Zm3.993,0h-2v2h2Zm3.993,0h-2v2h2Zm2-6.988h-1V3h-2V5H9.492V3h-2V5h-1a1.988,1.988,0,0,0-1.987,2L4.5,20.97a2,2,0,0,0,2,2H20.473a2,2,0,0,0,2-2V6.993A2,2,0,0,0,20.473,5Zm0,15.973H6.5V9.988H20.473Z" transform="translate(-4.5 -3)" fill="#939482" />
           </svg>
@@ -101,6 +74,7 @@ function App() {
           </div>
         </div>
       </header>
+
       <nav id="weather-bar">
         <div className="weather-icon">
           <div className="icon"></div>
@@ -138,6 +112,7 @@ function App() {
         }
       )}
       <footer className="footer">footer</footer>
+      */}
     </>
   );
 }
