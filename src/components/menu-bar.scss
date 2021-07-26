@@ -7,38 +7,59 @@
   z-index: 2;
   top: calc(100% - 63px);
   border-top: 1px solid white;
-  box-shadow: rgba($color1, $alpha: 0.63) 1px -1px 0px;
+  box-shadow: rgba($color1, 0.6) 1px -1px 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background: rgba($color-bg, $alpha: 1);
+  background: rgba($color-bg, 0.8);
   padding: 10px;
 
-  .menu-item {
+  a {
     cursor: pointer;
+    font-size: 0;
+    display: flex;
+    justify-content: center; //!
+    transition: color 1s;
 
-    a {
-      font-size: 0;
-      display: flex;
-      justify-content: center; //!
-      transition: all 1s;
-      /*&:hover{
-        background-color:#000000;
-        transition: all 1s;
-      }*/
-      img.menu-icon {
-        width: 40px;
-        height: 40px;
+    &:nth-child(2) {
+      display: none;
+    }
+
+    &:hover .menu-icon {
+      //transition: stroke 1s;
+      & #stroke {
+        stroke: $color1;
+        transition: stroke 1s;
       }
-      .menu-icon:hover {
-        fill:green;
-        color: greenyellow;
-        background-color: red;
+      & #fill {
+        fill: $color1;
+        transition: fill 1s;
+      }
+    }
+    .menu-icon {
+      width: 40px;
+      height: 40px;
+
+      #stroke {
+        stroke: $color2;
+        transition: stroke 1s;
+      }
+      #fill {
+        fill: $color2;
+        transition: fill 1s;
       }
     }
   }
-  .menu-item .current {
-    color: red;
+
+  .current {
+    color: $color1;
+    transition: color 1s;
+    .menu-icon #stroke {
+      stroke: $color1;
+    }
+    .menu-icon #fill {
+      fill: $color1;
+    }
   }
 }
 
@@ -58,60 +79,31 @@
   #menu-bar {
     width: $menu-bar-width;
     height: 100%;
+    border-top: 0;
     top: 0;
     border-right: 1px solid white;
     flex-direction: column;
     justify-content: center;
     background: rgba($color-bg, $alpha: 1);
-    //padding: 10px;
 
-    .menu-item {
-      //border:1px solid  red;
-      padding: 10px 0;
-      a {
-        font-size: 12px;
-        font-weight: bold;
-        font-family: $label_menu_icon;
-        color: $color2;
-        flex-direction: column;
-        white-space: nowrap;
-        align-items: center;
-        text-decoration: none;
-
-        img.menu-icon {
-          width: 40px;
-          height: 40px;
-        }
+    a {
+      padding: 1rem 0;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: $label_menu_icon;
+      color: $color2;
+      flex-direction: column;
+      white-space: nowrap;
+      align-items: center;
+      text-decoration: none;
+      &:nth-child(1) {
+        padding: 10px;
+        position: absolute;
+        top: 0px;
+      }
+      &:nth-child(2) {
+        display: flex;
       }
     }
   }
 }
-
-/*#menu-bar {
-  
-  position: fixed;
-  z-index: 2; //! ?
-  border-right: 1px solid white;
-  box-shadow:  rgba($color1, $alpha: .63) 1px -1px 0px;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-gap: 1rem;
-  background: rgba($color-bg, $alpha: 1);
-
-  .menu-item {
-    text-align: center;
-    .menu-icon {
-      width: 50px;
-      height: 50px;
-      border: 1px solid $color2;
-    }
-    a {
-      text-decoration: none;
-    }
-  }
-}
-*/
