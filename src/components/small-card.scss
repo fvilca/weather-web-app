@@ -1,5 +1,18 @@
 @import "../variables";
 
+.ratio-widget1{
+  grid-area:ratio-widget1;
+}
+.ratio-widget2{
+  grid-area:ratio-widget2;
+}
+
+.ratio-widget {
+  display: flex;
+  justify-content: center;
+}
+
+
 .small-card-wrapper {
   position: relative;
   width: 96px;

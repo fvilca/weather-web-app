@@ -1,0 +1,46 @@
+@import "../variables.scss";
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.filter {
+  border-radius: 10px;
+  background: rgba(#fff, 0.3);
+  width: 90%; //!
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+}
+
+.city-filter {
+  justify-self: start;
+  display: flex;
+  justify-content: flex-end;
+
+  .search-icon {
+    display: none;
+  }
+  .city-input {
+  }
+  .svg-arrow-right {
+    margin-left: 25px;
+    margin-right: 10px;
+  }
+}
+
+.date-filter {
+  justify-self: end;
+
+  .date-icon {
+    display: none;
+  }
+
+  .day-input {
+  }
+  .svg-arrow-left {
+    margin-left: 10px;
+    margin-right: 25px;
+  }
+}

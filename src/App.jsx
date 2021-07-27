@@ -3,6 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom'
 import { useTransition, a, config } from 'react-spring'
 import HomePage from './HomePage/HomePage';
 import MenuBar from './components/MenuBar';
+import { SettingPage } from './SettingPage/SettingPage';
 
 function App() {
 
@@ -35,22 +36,9 @@ function App() {
           )
         }
       )}
-      {/*<footer className="footer">footer</footer>
-      */}
     </>
   );
 }
 
-export const SettingPage = () => {
-  return (
-    <div className='page-hours'>
-      <p>Your LOCATION</p>
-      <p>aUTODEFINE YES|no</p>
-      <p>nOTIFICATIONS si|no</p>
-      <p>nOTIFICATIONS si|no</p>
-      texto  largo de warnings creo
-      <p>Sistema demedicion C|F</p>
-    </div>
-  )
-}
+
 export default App;

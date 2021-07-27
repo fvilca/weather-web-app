@@ -1,24 +1,10 @@
 @import "../variables";
 
-.widget-temp{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-}
-.widget-date{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
-    height: 100%;
-}
-
-.temp {
+.temp-widget {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  grid-area: temp-widget;
   .number {
     font-size: 9.51rem;
     color: $color1;
@@ -27,17 +13,10 @@
     font-family: $label_card;
   }
   .grade {
-    font-size: 5.87rem;
+    font-size: 9.51rem;
     color: $color2;
     font-weight: bold;
     font-family: $label_card;
-    margin-top: 20px;
-    letter-spacing:-5px ;
+    letter-spacing: -6px;
   }
-}
-
-.label {
-  font-size: 1.87rem;
-  color: $color2;
-  font-family: $label_card;
 }

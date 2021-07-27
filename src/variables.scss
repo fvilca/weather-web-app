@@ -29,6 +29,12 @@ $label_menu_icon: 'Segoe WP bold';
 $txt-filter:1.111rem;
 //! solo tiene sentido aquello q se va a reutilizar mucho por ejemplo parrafos, titulos
 
+.filter-text{
+  font-family: $label_card;
+  font-weight: bold;
+  font-size: 25px;
+  color: $color2;
+}
 
 
 /** SHAPES ****/
@@ -54,3 +60,10 @@ $txt-filter:1.111rem;
   background-color: orange;
   border-radius: 50%;
 }
+
+/*
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+*/
