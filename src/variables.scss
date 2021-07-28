@@ -29,6 +29,12 @@ $label_menu_icon: 'Segoe WP bold';
 $txt-filter:1.111rem;
 //! solo tiene sentido aquello q se va a reutilizar mucho por ejemplo parrafos, titulos
 
+.weather-card-label{
+  font-family: $label_card;
+  font-weight: bold;
+  font-size: 20px;
+  color: $color2;
+}
 .filter-text{
   font-family: $label_card;
   font-weight: bold;

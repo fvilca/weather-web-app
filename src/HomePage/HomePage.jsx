@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import CityFilter from './../components/CityFilter';
 import DateFilter from '../components/DateFilter';
 import { RatioWidget1, RatioWidget2 } from '../components/RatioWidget';
+import DayShiftWidget from '../components/DayShift';
 
 export default function HomePage() {
 
@@ -37,7 +38,10 @@ export default function HomePage() {
       <TempWidget />
       <CityFilter />
       <DateFilter />
-      <RatioWidget1 />,
+
+      <DayShiftWidget/>
+
+      <RatioWidget1 />
       <RatioWidget2 />
 
       <section id="sectionhours">
