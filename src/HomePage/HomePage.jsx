@@ -6,6 +6,7 @@ import CityFilter from './../components/CityFilter';
 import DateFilter from '../components/DateFilter';
 import { RatioWidget1, RatioWidget2 } from '../components/RatioWidget';
 import DayShiftWidget from '../components/DayShift';
+import WeatherSlider from '../components/WeatherSlider';
 
 export default function HomePage() {
 
@@ -31,9 +32,7 @@ export default function HomePage() {
   return (
     <div className='home-page'>
 
-      <div className="weather-day-bar">
-        weather slider
-      </div>
+      <WeatherSlider/>
 
       <TempWidget />
       <CityFilter />

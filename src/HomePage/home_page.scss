@@ -1,9 +1,21 @@
 @import "../variables.scss";
 
+
+/*
+* pagina solo debe contener 
+referencias a secciones  
+margines  
+y padding
+todo respecto al layout
+y cada componente ya tiene caracteristicas de vsuales
+ excepto de ubicacion expecifica
+*/  
+
+
 #sectionhours {
   width: 100%;
   height: 1500px;
-  grid-area: hours;
+  grid-area: hours; 
 }
 #sectioncities {
   width: 100%;
@@ -12,12 +24,12 @@
 }
 
 .home-page {
-  border: 1px dashed black;
-  width: 100%;
+  border: 1px dashed white;
+  width: 100%; //!
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "weather-day-bar  weather-day-bar"
+    "weather-slider  weather-slider"
     "temp-widget      temp-widget"
     "city-filter      date-filter"
     "day-shift-widget day-shift-widget"
@@ -27,11 +39,22 @@
     "cities           cities";
 }
 
-.weather-day-bar {
-  background: gray;
-  grid-area: weather-day-bar;
-  width: 100%;
+.weather-slider {
+  grid-area: weather-slider;
 }
+.temp-widget {
+  padding: 2rem;
+}
+.day-shift-widget {
+  padding: 2rem;
+}
+.ratio-widget1 {
+  padding: 0;
+}
+.ratio-widget2 {
+  padding-bottom: 2rem;
+}
+
 
 @media (min-width: 640px) {
 }
