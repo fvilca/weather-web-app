@@ -1,12 +1,12 @@
 @import "../variables";
 
 .day-shift-widget {
-  grid-area: day-shift-widget;
   width: 100%;
-  //border: 1px solid red;
+  border: 1px solid red;
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .day-shift-widget .weather-card-container {
@@ -17,6 +17,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  
 }
 
 .weather-card-container .background-widget {
@@ -27,25 +28,26 @@
   border: 2px solid rgba(white, 0.6);
   background-color: rgba(white, 0.3);
   border-radius: 15px;
-  top: 60px;
+  top: calc(50px + 1.5vw);
   bottom: 0px;
 }
-.weather-card-container svg{
-  width: 80px;
-  height: auto;
+.weather-card-container img{
+  width: calc(70px + 3vw);
+  height: calc(70px + 3vw);
+  border: 2px solid black;
 }
 
 .weather-card-container p {
   
   font-family: $label_card;
   font-weight: bold;
-  font-size: 15px;
+   font-size:calc(12px + 1.5vw);
   color: $color2;
 }
 .weather-card-container span {
   font-family: $label_card;
   font-weight: bold;
-  font-size: 50px;
+  font-size:calc(30px + 1.5vw);
   color: $color1;
 }
 

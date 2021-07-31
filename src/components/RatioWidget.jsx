@@ -1,7 +1,6 @@
 import React from 'react'
 import './small-card.scss'
 
-
 const data = [
     { id: 1, name: 'Visibility', value: '5.4', unit: 'km', icon: 'visibility.svg', arrow: 'arrow-up' },
     { id: 2, name: 'Air quality ', value: '147', unit: '', icon: 'air_quality.svg', arrow: 'arrow-down' },
@@ -12,7 +11,6 @@ const data = [
   ]
 
 export const RatioWidget1 = () => {
-
     return (
         <div className=' ratio-widget ratio-widget1'>
             <SmallCard {...data[0]} />
@@ -22,7 +20,6 @@ export const RatioWidget1 = () => {
     )
 }
 export const RatioWidget2 = ({ index }) => {
-
     return (
         <div className=' ratio-widget ratio-widget2'>
             <SmallCard {...data[3]} />

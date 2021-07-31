@@ -1,16 +1,20 @@
 @import "../variables";
 
-.ratio-widget1{
-  grid-area:ratio-widget1;
-}
-.ratio-widget2{
-  grid-area:ratio-widget2;
-}
-
 .ratio-widget {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
+.ratio-widget1{
+  grid-area:ratio-widget1;
+  //justify-content: flex-end;
+}
+.ratio-widget2{
+  grid-area:ratio-widget2;
+  //justify-content: flex-start;
+}
+
 
 
 .small-card-wrapper {

@@ -32,14 +32,19 @@ export default function HomePage() {
   return (
     <div className='home-page'>
 
-      <WeatherSlider/>
+
+
+      {/*
+      <WeatherSlider />
+      
+      */} {/** PROBLEM OVERFLOW .*/}
+
 
       <TempWidget />
       <CityFilter />
       <DateFilter />
 
-      <DayShiftWidget/>
-
+      <DayShiftWidget />
       <RatioWidget1 />
       <RatioWidget2 />
 
@@ -50,7 +55,6 @@ export default function HomePage() {
       <section id="sectioncities">
         Ciudades
       </section>
-
     </div>
   )
 }

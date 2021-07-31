@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './weather-slider.scss'
-import { a, useTransition, useSpringRef } from 'react-spring';
+import { a, useTransition, config } from 'react-spring';
 
 const data = [
     { svg: 'sunny', label: 'Soleado' },
@@ -9,33 +9,33 @@ const data = [
 ]
 
 const WeatherSlider = () => {
-
-    const [currentIndex, setcurrentIndex] = useState(0)
-    const transRef = useSpringRef()
+    const [direction, setDirection] = useState(1)
+    const [currentIndex, setcurrentIndex] = useState(1)
 
     const tSpring = useTransition(currentIndex, {
-        ref: transRef,
         key: null,
-        from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-        enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-        leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+        from: { opacity: 0, transform: `translate3d(${direction * 100}px, 0, 0)` },
+        enter: { opacity: 1, transform: 'translate3d(0,0,0)' },
+        leave: { opacity: 0, transform: `translate3d(0, 0, 0)` },
+        config: config.gentle,
     })
 
     const nextHandle = (params) => {
-        if (currentIndex !== (data.length - 1))
+        if (currentIndex !== (data.length - 1)) {
             setcurrentIndex(currentIndex + 1)
+            setDirection(1)
+        }
     }
     const prevHandle = (params) => {
-        if (currentIndex !== 0)
+        if (currentIndex !== 0) {
             setcurrentIndex(currentIndex - 1);
+            setDirection(-1)
+        }
     }
-
-    useEffect(() => {
-        transRef.start()
-    }, [currentIndex])
 
     return (
         <div className="weather-slider">
+            {/*}
             <svg
                 onClick={prevHandle}
                 width="16.728" height="28.456" viewBox="0 0 16.728 28.456">
@@ -60,6 +60,7 @@ const WeatherSlider = () => {
                 width="16.728" height="28.456" viewBox="0 0 16.728 28.456">
                 <path id="Icon_feather-chevron-left" data-name="Icon feather-chevron-left" d="M10.692,21.384,0,10.692,10.692,0" transform="translate(14.228 24.92) rotate(180)" fill="none" stroke="#939482" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
             </svg>
+            */}
         </div>
     )
 }

@@ -2,9 +2,9 @@
 
 //! dont use height prop, only in svg image
 #menu-bar {
-  width: 100%;
   position: fixed;
-  z-index: 2;
+  width: 100%;
+  z-index: 3;
   top: calc(100% - 63px);
   border-top: 1px solid white;
   box-shadow: rgba($color1, 0.6) 1px -1px 0px;
@@ -37,8 +37,8 @@
       }
     }
     .menu-icon {
-      width: 40px;
-      height: 40px;
+      width: 39px;
+      height: 39px;
 
       #stroke {
         stroke: $color2;
@@ -63,12 +63,6 @@
   }
 }
 
-@media (min-width: 640px) {
-  // tablet
-  body {
-    background-color: salmon;
-  }
-}
 
 @media (min-width: 1060px) {
   //desktop
