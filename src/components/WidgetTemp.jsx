@@ -4,8 +4,8 @@ import './widget.scss'
 export default function TempWidget() {
     return (
         <div className='temp-widget'>
-            <p className="number">23</p>
-            <p className="grade">°C</p>
+            <p className="temp--number">23</p>
+            <p className="temp--grade">°C</p>
         </div>
     )
 }

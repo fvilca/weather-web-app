@@ -1,46 +1,40 @@
 @import "../variables.scss";
 
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
 .filter {
-  border-radius: 10px;
-  background: rgba(#fff, 0.3);
-  width: 90%; //!
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 5px 15px;
+  overflow: hidden;
+  
+  .filter--container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .filter--icon{
+    width: calc(15px + 1vw);
+    margin: 0 10px;
+  }
+  .filter--text{
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: calc(1rem + .8vw);
+    width: calc(180px + 2.5vw);
+    white-space: nowrap;
+    font-family: $label_card;
+    font-weight: bold;
+    color: $color1;
+    margin:  .5rem 0 ;
 }
-
-.city-filter {
-  justify-self: start;
-  display: flex;
-  justify-content: flex-end;
-
-  .search-icon {
-    display: none;
-  }
-  .city-input {
-  }
-  .svg-arrow-right {
-    margin-left: 25px;
-    margin-right: 10px;
-  }
+.filter--arrow{
+  width: calc(15px + 1vw);
+  height: auto;
+  margin: 0 10px;
 }
-
-.date-filter {
-  justify-self: end;
-
-  .date-icon {
-    display: none;
-  }
-
-  .day-input {
-  }
-  .svg-arrow-left {
-    margin-left: 10px;
-    margin-right: 25px;
-  }
 }

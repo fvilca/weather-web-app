@@ -1,9 +1,11 @@
 @import "../variables.scss";
 
 
+
+
 /*
 * pagina solo debe contener
-borders 
+borders temp
 referencias a secciones  
 margines  
 y padding
@@ -26,45 +28,53 @@ y cada componente ya tiene caracteristicas de vsuales
 
 .home-page {
   border: 1px dashed white;
-  max-width: 100vw; //!
+  width: 100vw; //!
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    "weather-slider  weather-slider"
+    "slider  slider"
     "temp-widget      temp-widget"
-    "city-filter      date-filter"
+    "filter--city      filter--city"
+    "filter--date      filter--date"
     "day-shift-widget day-shift-widget"
     "ratio-widget1    ratio-widget1"
     "ratio-widget2    ratio-widget2"
+    "temp temp"
     "hours            hours"
     "cities           cities";
 
-    //overflow: hidden;
+    //gap: 1rem;
 }
 
-.weather-slider {
-  grid-area: weather-slider;
+.slider {
+    border: 2px solid white;
+    grid-area: slider;
 }
 .temp-widget {
-  padding-top: 2rem;
+  //padding-top: 2rem;
+  border: 1px solid green;
 }
 .day-shift-widget {
   grid-area: day-shift-widget;
-  padding-top: 2rem;
+  //padding-top: 2rem;
+  border: 1px solid green;
+}
+
+.filter--city{
+  grid-area: filter--city;
+  border: 2px solid salmon;
+  //margin: 6rem;
+}
+.filter--date{
+  grid-area: filter--date;
+  border: 2px solid blue;
 }
 .ratio-widget1 {
   padding: 0;
 }
 .ratio-widget2 {
-  padding-bottom: 2rem;
+  padding-bottom: 0rem;
 }
-
-.city-filter{
-  grid-area: city-filter;
-}  
-.date-filter{
-    grid-area: date-filter;
-}  
 
 @media (min-width: 640px) {
 }
@@ -74,10 +84,9 @@ y cada componente ya tiene caracteristicas de vsuales
   .home-page {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-    "weather-slider   weather-slider  weather-slider"
-    "temp-widget      temp-widget     temp-widget"
-    "city-filter   .                  date-filter"
-    "ratio-widget1 day-shift-widget   ratio-widget2"
+    "weather-slider   weather-slider      weather-slider"
+    "filter--city   temp-widget filter--date"
+    "ratio-widget1    day-shift-widget    ratio-widget2"
     "hours            hours hours "
     "cities           cities cities";
   }

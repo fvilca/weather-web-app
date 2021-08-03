@@ -2,7 +2,6 @@
 
 .day-shift-widget {
   width: 100%;
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -34,7 +33,6 @@
 .weather-card-container img{
   width: calc(70px + 3vw);
   height: calc(70px + 3vw);
-  border: 2px solid black;
 }
 
 .weather-card-container p {
