@@ -1,0 +1,35 @@
+@import "../variables.scss";
+
+.slider{ 
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 200px;
+    svg{
+        width: 10vw;
+        cursor: pointer;
+        z-index: 2;
+        background-color: black;
+    }
+    .container-spring{
+        position: absolute;
+        border: 1px solid  black ;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        
+        .img--left{
+            width: 30px;
+        }
+        .img--rigth{
+            width: 30px;
+        }
+    }
+    
+}
+
+

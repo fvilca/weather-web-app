@@ -1,0 +1,92 @@
+@import "variables";
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+  color: $color1;
+  box-sizing: border-box;
+  font-family: $font_paragraph;
+  user-select: none;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font_paragraph;
+  font-size: 18px;
+  overflow-x: hidden;
+  height: 100vh;
+  width: 100%;
+  background-color: $color3;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  //width: 100vw;
+  //height: 100vh;
+  overflow-x: hidden;
+  color: $color2;
+  height: 100%;
+  width: 100%;
+  //position: relative;   //! problem
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  width: 130px;
+  outline: none;
+  border: none;
+  background: none;
+  font-weight: 700;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: $txt-filter;
+  color: $color1;
+  opacity: 1; /* Firefox */
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  font-size: $txt-filter;
+  color: $color1;
+}
+
+button {
+  background:none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+
+@media (min-width: 1060px) {
+  //desktop
+  body {
+    background-color: lightgreen;
+    font-size: 18px;
+  }
+}
+
+/*
+@media (min-width: 640px) {
+  // tablet
+  body {
+    background-color: salmon;
+  }
+}
+@media (min-width: 1060px) {
+
+  body {
+    background-color: salmon;
+  }
+}
+*/

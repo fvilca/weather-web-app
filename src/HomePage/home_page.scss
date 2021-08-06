@@ -1,0 +1,93 @@
+@import "../variables.scss";
+
+
+
+
+/*
+* pagina solo debe contener
+borders temp
+referencias a secciones  
+margines  
+y padding
+todo respecto al layout
+y cada componente ya tiene caracteristicas de vsuales
+ excepto de ubicacion expecifica
+*/  
+
+
+#sectionhours {
+  width: 100%;
+  height: 500px;
+  grid-area: hours; 
+}
+#sectioncities {
+  width: 100%;
+  height: 1500px;
+  grid-area: cities;
+}
+
+.home-page {
+  border: 1px dashed white;
+  width: 100vw; //!
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "slider  slider"
+    "temp-widget      temp-widget"
+    "filter--city      filter--city"
+    "filter--date      filter--date"
+    "day-shift-widget day-shift-widget"
+    "ratio-widget1    ratio-widget1"
+    "ratio-widget2    ratio-widget2"
+    "temp temp"
+    "hours            hours"
+    "cities           cities";
+
+    //gap: 1rem;
+}
+
+.slider {
+    border: 2px solid white;
+    grid-area: slider;
+}
+.temp-widget {
+  //padding-top: 2rem;
+  border: 1px solid green;
+}
+.day-shift-widget {
+  grid-area: day-shift-widget;
+  //padding-top: 2rem;
+  border: 1px solid green;
+}
+
+.filter--city{
+  grid-area: filter--city;
+  border: 2px solid salmon;
+  //margin: 6rem;
+}
+.filter--date{
+  grid-area: filter--date;
+  border: 2px solid blue;
+}
+.ratio-widget1 {
+  padding: 0;
+}
+.ratio-widget2 {
+  padding-bottom: 0rem;
+}
+
+@media (min-width: 640px) {
+}
+
+@media (min-width: 1060px) {
+
+  .home-page {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    "weather-slider   weather-slider      weather-slider"
+    "filter--city   temp-widget filter--date"
+    "ratio-widget1    day-shift-widget    ratio-widget2"
+    "hours            hours hours "
+    "cities           cities cities";
+  }
+}

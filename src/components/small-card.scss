@@ -1,0 +1,70 @@
+@import "../variables";
+
+.ratio-widget {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ratio-widget1{
+  grid-area:ratio-widget1;
+  //justify-content: flex-end;
+}
+.ratio-widget2{
+  grid-area:ratio-widget2;
+  //justify-content: flex-start;
+}
+
+
+
+.small-card-wrapper {
+  position: relative;
+  width: 96px;
+  
+  margin: 0.5rem;
+  text-align: center;
+  background-color: rgba(white, 0.2);
+  border: 2px solid rgba(white, 0.6);
+  border-radius: 10px;
+  transition: all 1s;
+  &:hover{
+    background-color: rgba(white, 0.6);
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    margin: 0.8rem;
+    transition: all 1s;
+  }
+}
+
+.small-card-wrapper > .wrapper-arrow {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: calc(100% - 20px);
+}
+.small-card-wrapper > .ratio {
+  margin-bottom: 5px;
+}
+.small-card-wrapper > .ratio > .number {
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: $label_card;
+  color: $color1;
+}
+.small-card-wrapper > .ratio > .unit {
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-family: $label_card;
+  color: $color1;
+}
+.small-card-wrapper > .label-card {
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: $label_card;
+  color: $color2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0.4rem 10px 10px;
+}

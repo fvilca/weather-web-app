@@ -1,0 +1,20 @@
+<svg id="sunny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="77.795" height="67.129" viewBox="0 0 77.795 67.129">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" fx="0.7463607788085938" fy="0.5397146344184875" r="0.498" gradientTransform="translate(-0.005) scale(1.01 1)" gradientUnits="objectBoundingBox">
+      <stop offset="0.216" stop-color="#fddb4b"/>
+      <stop offset="0.329" stop-color="#fdd84b"/>
+      <stop offset="0.437" stop-color="#fcd14b"/>
+      <stop offset="0.543" stop-color="#fac44c"/>
+      <stop offset="0.647" stop-color="#f8b14b"/>
+      <stop offset="0.696" stop-color="#f6a54a"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0.517" cy="0.5" fx="0.0902060866355896" fy="0.16570401191711426" r="0.762" gradientTransform="translate(0.122) scale(0.756 1)" gradientUnits="objectBoundingBox">
+      <stop offset="0.345" stop-color="#fff"/>
+      <stop offset="0.581" stop-color="#fcfcfc"/>
+      <stop offset="0.811" stop-color="#f2f2f2"/>
+      <stop offset="0.975" stop-color="#e7e6e6"/>
+    </radialGradient>
+  </defs>
+  <path id="椭圆_62-2_2_" d="M102.512,43.809A15.683,15.683,0,1,1,86.829,59.492,15.682,15.682,0,0,1,102.512,43.809Zm0-9.649a1.209,1.209,0,0,1,1.207,1.207v3.62a1.207,1.207,0,1,1-2.414,0v-3.62A1.209,1.209,0,0,1,102.512,34.16ZM78.387,58.285h3.62a1.207,1.207,0,0,1,0,2.414h-3.62a1.207,1.207,0,1,1,0-2.414ZM86.44,41.712l2.414,2.414a1.208,1.208,0,1,1-1.708,1.708L84.732,43.42a1.208,1.208,0,0,1,1.708-1.708Zm32.143,0-2.413,2.414a1.208,1.208,0,1,0,1.708,1.708l2.414-2.414a1.208,1.208,0,0,0-1.708-1.708ZM86.44,77.266l2.414-2.414a1.208,1.208,0,0,0-1.708-1.708l-2.414,2.414a1.208,1.208,0,0,0,1.708,1.708Zm36.285-18.945h3.62a1.207,1.207,0,0,1,0,2.414h-3.62a1.207,1.207,0,0,1,0-2.414Zm-5.19,14.486,2.414,2.414a1.208,1.208,0,0,1-1.708,1.708l-2.414-2.414a1.208,1.208,0,0,1,1.708-1.708Zm-14.987,6.2a1.209,1.209,0,0,1,1.207,1.207v3.62a1.207,1.207,0,1,1-2.414,0v-3.62A1.209,1.209,0,0,1,102.548,79.01Z" transform="translate(-49.757 -34.16)" fill-rule="evenodd" fill="url(#radial-gradient)"/>
+  <path id="Path_89" data-name="Path 89" d="M74.428,84.337c-.455,0-.9.026-1.345.061a25.312,25.312,0,1,0-24.222,32.664H75.2c8.9,0,15.34-7.721,15.34-16.619A16.105,16.105,0,0,0,74.428,84.337Z" transform="translate(-23.55 -49.934)" fill="url(#radial-gradient-2)"/>
+</svg>

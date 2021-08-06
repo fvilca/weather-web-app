@@ -1,0 +1,77 @@
+$color1: #3c423a;
+$color2: #939482;
+$color3: #d0d7bf;
+$color-bg: #d0d7bf;
+$menu-bar-width: 80px;
+
+@font-face {
+  font-family: "Segoe WP";
+  font-style: normal;
+  font-weight: normal;
+  //src: local("Segoe WP"), url("SegoeWP.woff") format("woff");
+  src: url("SegoeWP.woff") format("woff");
+}
+@font-face {
+  font-family: "Segoe WP bold";
+  font-style: normal;
+  font-weight: normal;
+  //src: local("Segoe WP"), url("SegoeWP.woff") format("woff");
+  src: url("SegoeWP-Bold.woff") format("woff");
+}
+$font_paragraph: 'Segoe WP';
+$label_card: 'Segoe WP bold';
+$label_menu_icon: 'Segoe WP bold';
+
+
+
+/** TEXT ****/
+
+$txt-filter:1.111rem;
+//! solo tiene sentido aquello q se va a reutilizar mucho por ejemplo parrafos, titulos
+
+
+.filter-text{
+  font-family: $label_card;
+  font-weight: bold;
+  font-size: 25px;
+  color: $color2;
+}
+.slider-label{
+  font-family: $label_card;
+  font-weight: bold;
+  font-size: 20px;
+  color: $color1;
+  white-space: nowrap;
+}
+
+
+/** SHAPES ****/
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #1AFF00;
+}
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid red;
+}
+
+.circle{
+  width:  8px;
+  height: 8px;
+  background-color: orange;
+  border-radius: 50%;
+}
+
+/*
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+*/

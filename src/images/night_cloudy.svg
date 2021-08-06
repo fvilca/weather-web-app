@@ -1,0 +1,24 @@
+<svg id="Group_93"
+ data-name="Group 93" 
+ xmlns="http://www.w3.org/2000/svg" 
+ xmlns:xlink="http://www.w3.org/1999/xlink" 
+ width="123.636" 
+ height="102.435" 
+ viewBox="0 0 123.636 102.435">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#36fff1"/>
+      <stop offset="1" stop-color="#1159ff"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0.517" cy="0.5" fx="0.0902060866355896" fy="0.16570401191711426" r="0.762" gradientTransform="translate(0.122) scale(0.756 1)" gradientUnits="objectBoundingBox">
+      <stop offset="0.345" stop-color="#fff"/>
+      <stop offset="0.581" stop-color="#fcfcfc"/>
+      <stop offset="0.811" stop-color="#f2f2f2"/>
+      <stop offset="0.975" stop-color="#e7e6e6"/>
+    </radialGradient>
+  </defs>
+  <path id="Icon_open-moon" data-name="Icon open-moon" d="M19.245,0a28.261,28.261,0,1,0,35.8,35.8,29.3,29.3,0,0,1-9.056,1.557,28.293,28.293,0,0,1-28.3-28.3A27.353,27.353,0,0,1,19.245,0Z" transform="translate(68.59 0)" fill="url(#radial-gradient)"/>
+  <g id="sunny" transform="translate(0 20.366)">
+    <path id="Path_89" data-name="Path 89" d="M106.034,95.454c-.738,0-1.459.041-2.18.1a41.036,41.036,0,1,0-39.269,52.955h42.693c14.424,0,24.869-12.518,24.869-26.942A26.11,26.11,0,0,0,106.034,95.454Z" transform="translate(-23.55 -66.44)" fill="url(#radial-gradient-2)"/>
+  </g>
+</svg>
