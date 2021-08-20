@@ -66,7 +66,7 @@ const WeatherSlider = () => {
               className="spring--left"
               style={style}
               src={
-                require("../images/" + bd[i === 0 ? 0 : i - 1].icon + ".svg")
+                require("../images/" + bd[i === 0 ? 0 : i - 1].icon + "_outline.svg")
                   .default
               }
               alt=""
@@ -131,7 +131,7 @@ const WeatherSlider = () => {
             <a.img
               className="spring--right"
               style={style}
-              src={require("../images/" + bd[i + 1].icon + ".svg").default}
+              src={require("../images/" + bd[i + 1].icon + "_outline.svg").default}
               alt=""
             />
           );

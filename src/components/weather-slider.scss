@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   height: calc(100px + 5vw); //cambiar esto en IPAD y DESKTOP
+  //height: 100%;
   svg {
     width: calc(30px + 1.5vw);
     cursor: pointer;
@@ -33,8 +34,8 @@
       position: absolute;
       //width: calc(50px + 2.5vw);
       //height: calc(50px + 2.5vw);
-      width: 90%;
-      height: 90%;
+      width: 70%;
+      height: 70%;
       opacity: 0.9;
     }
     .spring--middle {
@@ -48,8 +49,8 @@
       position: absolute;
       //width: calc(50px + 2.5vw);
       //height: calc(50px + 2.5vh);
-      width: 90%;
-      height: 90%;
+      width: 70%;
+      height: 70%;
       opacity: 0.9;
     }
   }
@@ -57,8 +58,9 @@
 
 .container-left{
   //width: calc(100px + 5.5vw);
-  height: calc(100px + 5.5vw); 
+  //height: calc(100px + 5.5vw); 
   width: 20%;
+  height: 60%;
 }
 .container-middle{
   //width: calc(300px + 5.5vw);
@@ -67,6 +69,7 @@
 }
 .container-right{
   //width: calc(100px + 5.5vw);
-  height: calc(100px + 5.5vw); 
+  //height: calc(100px + 5.5vw); 
+  height: 60%;
   width: 20%;
 }
