@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(155px + 5vw); //cambiar esto en IPAD y DESKTOP
+  height: calc(100px + 5vw); //cambiar esto en IPAD y DESKTOP
   svg {
     width: calc(30px + 1.5vw);
     cursor: pointer;
@@ -31,34 +31,42 @@
 
     .spring--left {
       position: absolute;
-      width: calc(50px + 2.5vw);
-      height: calc(50px + 2.5vw);
+      //width: calc(50px + 2.5vw);
+      //height: calc(50px + 2.5vw);
+      width: 90%;
+      height: 90%;
       opacity: 0.9;
     }
     .spring--middle {
       position: absolute;
       width: 100%;
-      height: auto;
-      border: 1px solid blue;
+      //width: calc(150px + 5.5vw);
+      height: 100%;
+      //border: 1px solid blue;
     }
     .spring--right {
       position: absolute;
-      width: calc(50px + 2.5vw);
-      height: calc(50px + 2.5vh);
+      //width: calc(50px + 2.5vw);
+      //height: calc(50px + 2.5vh);
+      width: 90%;
+      height: 90%;
       opacity: 0.9;
     }
   }
 }
 
 .container-left{
-  width: calc(100px + 5.5vw);
+  //width: calc(100px + 5.5vw);
   height: calc(100px + 5.5vw); 
+  width: 20%;
 }
 .container-middle{
-  width: calc(300px + 5.5vw);
+  //width: calc(300px + 5.5vw);
   height: 100%;
+  width: 50%;
 }
 .container-right{
-  width: calc(100px + 5.5vw);
+  //width: calc(100px + 5.5vw);
   height: calc(100px + 5.5vw); 
+  width: 20%;
 }
