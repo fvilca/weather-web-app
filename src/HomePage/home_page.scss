@@ -77,6 +77,10 @@ y cada componente ya tiene caracteristicas de vsuales
 }
 
 @media (min-width: 640px) {
+  body {
+    background-color: salmon;
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1060px) {
