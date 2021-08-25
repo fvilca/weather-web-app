@@ -28,15 +28,17 @@ export default function HomePage() {
   return (
     <div className="home-page">
       <WeatherSlider />
+      <TempWidget />
+      <DateFilter />
+      <CityFilter />
+
       <DayShiftWidget />
       <RatioWidget1 />
       <RatioWidget2 />
       {/*
     
-    <TempWidget />
-      <DateFilter />
-      <CityFilter />
-
+    
+ 
       
 
 

@@ -26,13 +26,13 @@ const WeatherSlider = () => {
     from: {
       opacity: 0,
       transform: `translate3d(${direction * -80}%, 0, 0)`,
-      scale: .5,
+      scale: 0.5,
     },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)", scale: 1 },
     leave: {
       opacity: 0,
       transform: `translate3d(${direction * 80}%, 0, 0)`,
-      scale: .5,
+      scale: 0.5,
     },
     config: config.gentle,
     //config: { duration: 1000 },
@@ -66,8 +66,9 @@ const WeatherSlider = () => {
               className="spring--left"
               style={style}
               src={
-                require("../images/" + bd[i === 0 ? 0 : i - 1].icon + "_outline.svg")
-                  .default
+                require("../images/" +
+                  bd[i === 0 ? 0 : i - 1].icon +
+                  "_outline.svg").default
               }
               alt=""
             />
@@ -97,12 +98,14 @@ const WeatherSlider = () => {
         {tSpring((style, i, j) => {
           console.log("spring-m:", i);
           return (
-            <a.img
-              className="spring--middle"
-              style={style}
-              src={require("../images/" + bd[i].icon + ".svg").default}
-              alt=""
-            />
+            <a.div className="spring--middle">
+              <img
+                style={style}
+                src={require("../images/" + bd[i].icon + ".svg").default}
+                alt=""
+              />
+              <span style={{textAlign:"center"}}>123</span>
+            </a.div>
           );
         })}
       </div>
@@ -131,7 +134,9 @@ const WeatherSlider = () => {
             <a.img
               className="spring--right"
               style={style}
-              src={require("../images/" + bd[i + 1].icon + "_outline.svg").default}
+              src={
+                require("../images/" + bd[i + 1].icon + "_outline.svg").default
+              }
               alt=""
             />
           );

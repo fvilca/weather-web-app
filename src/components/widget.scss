@@ -1,23 +1,23 @@
 @import "../variables";
 
-.temp-widget {
+.temp-widget { 
+  height: calc(150px + 5vw);
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  grid-area: temp-widget;
+  align-items: center;
   .temp--number {
-    font-size: calc(4rem +  3vw);
+    font-size: 28.5vw;
     color: $color1;
     font-weight: bold;
     letter-spacing: -5px;
     font-family: $label_card;
   }
   .temp--grade {
-    font-size: calc(4rem +  3vw);
+    font-size: 25.5vw;
     color: $color2;
     font-weight: bold;
     font-family: $label_card;
     letter-spacing: -6px;
-    overflow: hidden;
   }
 }

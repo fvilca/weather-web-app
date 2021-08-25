@@ -47,33 +47,40 @@ y cada componente ya tiene caracteristicas de vsuales
 }
 
 .slider {
-    border: 2px solid white;
+  padding-top:1rem ;
+    //border: 2px solid white;
     grid-area: slider;
 }
 .temp-widget {
+  grid-area: temp-widget;
   //padding-top: 2rem;
-  border: 1px solid green;
+  //border: 1px solid green;
 }
 .day-shift-widget {
   grid-area: day-shift-widget;
-  //padding-top: 2rem;
-  border: 1px solid green;
+  //padding-top:  1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .filter--city{
   grid-area: filter--city;
-  border: 2px solid salmon;
-  //margin: 6rem;
+  //border: 2px solid salmon;
+  margin: 1rem;
 }
 .filter--date{
   grid-area: filter--date;
   border: 2px solid blue;
+  margin: 0 1rem;
 }
 .ratio-widget1 {
-  padding: 0;
+  margin: 1rem 0;
+  grid-area:ratio-widget1;
+  //border: 2px solid blue;
 }
 .ratio-widget2 {
-  padding-bottom: 0rem;
+  margin-bottom: 1rem;
+  grid-area:ratio-widget2;
 }
 
 @media (min-width: 640px) {

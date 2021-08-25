@@ -4,19 +4,18 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.day-shift-widget .weather-card-container {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  
+  gap: calc(4px + 2vw);
+  //flex-wrap: wrap;
+  //z-index: -1;
+  .weather-card-container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
 }
 
 .weather-card-container .background-widget {
@@ -27,25 +26,28 @@
   border: 2px solid rgba(white, 0.6);
   background-color: rgba(white, 0.3);
   border-radius: 15px;
-  top: calc(50px + 1.5vw);
+  //top: calc(50px + 1.5vw);
+  top:30%;
   bottom: 0px;
 }
-.weather-card-container img{
-  width: calc(70px + 3vw);
-  height: calc(70px + 3vw);
+.weather-card-container img {
+  /*width: calc(70px + 3vw);
+  height: calc(70px + 3vw);*/
+  width: 100%;
+  height: 100%;
 }
 
 .weather-card-container p {
-  
   font-family: $label_card;
   font-weight: bold;
-   font-size:calc(12px + 1.5vw);
+  font-size: calc(12px + 1.5vw);
   color: $color2;
 }
 .weather-card-container span {
   font-family: $label_card;
   font-weight: bold;
-  font-size:calc(30px + 1.5vw);
+  //font-size: calc(30px + 1.5vw);
+  font-size: 8.5vw;
   color: $color1;
 }
 
