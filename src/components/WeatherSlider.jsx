@@ -60,23 +60,27 @@ const WeatherSlider = () => {
     <div className="slider">
       <div className="container-spring container-left">
         {tSpring((style, i, j) => {
-          console.log("spring-l:", i);
           return (
-            <a.img
-              className="spring--left"
-              style={style}
-              src={
-                require("../images/" +
-                  bd[i === 0 ? 0 : i - 1].icon +
-                  "_outline.svg").default
-              }
-              alt=""
-            />
+            <a.div className="spring--left" style={style}>
+              <img
+                src={
+                  require("../images/" + bd[i + 1].icon + "_outline.svg")
+                    .default
+                }
+                alt=""
+              />
+              <span
+                className="mini-icon--label"
+                style={{ textAlign: "center" }}
+              >
+                Ayer
+              </span>
+            </a.div>
           );
         })}
       </div>
       <svg
-        className="left"
+        className="button--svg"
         onClick={prevHandle}
         width="16.728"
         height="28.456"
@@ -98,18 +102,23 @@ const WeatherSlider = () => {
         {tSpring((style, i, j) => {
           console.log("spring-m:", i);
           return (
-            <a.div className="spring--middle">
+            <a.div className="spring--middle" style={style}>
               <img
-                style={style}
                 src={require("../images/" + bd[i].icon + ".svg").default}
                 alt=""
               />
-              <span style={{textAlign:"center"}}>123</span>
+              <span
+                className="slider-icon-label"
+                style={{ textAlign: "center" }}
+              >
+                Hoy: Soleado
+              </span>
             </a.div>
           );
         })}
       </div>
       <svg
+        className="button--svg"
         onClick={nextHandle}
         width="16.728"
         height="28.456"
@@ -131,14 +140,21 @@ const WeatherSlider = () => {
         {tSpring((style, i, j) => {
           console.log("spring-r:", i);
           return (
-            <a.img
-              className="spring--right"
-              style={style}
-              src={
-                require("../images/" + bd[i + 1].icon + "_outline.svg").default
-              }
-              alt=""
-            />
+            <a.div className="spring--right" style={style}>
+              <img
+                src={
+                  require("../images/" + bd[i + 1].icon + "_outline.svg")
+                    .default
+                }
+                alt=""
+              />
+              <span
+                className="mini-icon--label"
+                style={{ textAlign: "center" }}
+              >
+                Mañana
+              </span>
+            </a.div>
           );
         })}
       </div>

@@ -3,37 +3,18 @@ import React from "react";
 export default function ModalDate({ title, handleModalVisible }) {
   return (
     <div className="modal">
-      <div className="modal--bg" onClick={handleModalVisible}>
-        bg
-      </div>
+      <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
         <h1 className="title">
           <span className="title filter--title--light"> Filtro: </span>
           <span className="title filter--title--dark"> Por Fecha </span>
         </h1>
 
-        <div className="date">
-          <div>
-            <svg
-              className="filter--icon--modal"
-              width="39.553"
-              height="43.948"
-              viewBox="0 0 39.553 43.948"
-            >
-              <path
-                d="M17.684,22.777H13.29v4.395h4.395Zm8.79,0H22.079v4.395h4.395Zm8.79,0H30.869v4.395h4.395ZM39.658,7.395h-2.2V3H33.066V7.395H15.487V3H11.092V7.395h-2.2A4.375,4.375,0,0,0,4.522,11.79L4.5,42.553a4.394,4.394,0,0,0,4.395,4.395H39.658a4.408,4.408,0,0,0,4.395-4.395V11.79A4.408,4.408,0,0,0,39.658,7.395Zm0,35.158H8.895V18.382H39.658Z"
-                transform="translate(-4.5 -3)"
-                fill="#939482"
-              />
-            </svg>
-          </div>
-          <div className="filter-text">23</div>
-          <div className="filter-text">May</div>
-          <div className="filter-text">2021</div>
-        </div>
+        <DateSelector />
 
         <div className="filter--buttons">
-          <svg className='button'
+          <svg
+            className="button"
             xmlns="http://www.w3.org/2000/svg"
             width="59.006"
             height="59.006"
@@ -48,7 +29,8 @@ export default function ModalDate({ title, handleModalVisible }) {
             />
           </svg>
 
-          <svg className='button'
+          <svg
+            className="button"
             xmlns="http://www.w3.org/2000/svg"
             width="59.006"
             height="59.006"
@@ -67,3 +49,56 @@ export default function ModalDate({ title, handleModalVisible }) {
     </div>
   );
 }
+
+const DateSelector = () => {
+  return (
+    <div className="date">
+      <svg
+        className="filter--icon--modal"
+        width="39.553"
+        height="43.948"
+        viewBox="0 0 39.553 43.948"
+      >
+        <path
+          d="M17.684,22.777H13.29v4.395h4.395Zm8.79,0H22.079v4.395h4.395Zm8.79,0H30.869v4.395h4.395ZM39.658,7.395h-2.2V3H33.066V7.395H15.487V3H11.092V7.395h-2.2A4.375,4.375,0,0,0,4.522,11.79L4.5,42.553a4.394,4.394,0,0,0,4.395,4.395H39.658a4.408,4.408,0,0,0,4.395-4.395V11.79A4.408,4.408,0,0,0,39.658,7.395Zm0,35.158H8.895V18.382H39.658Z"
+          transform="translate(-4.5 -3)"
+          fill="#939482"
+        />
+      </svg>
+      <Combo3 options={[]} value="23" />
+      <Combo3 options={[]} value="May" />
+      <Combo3 options={[]} value="2021" />
+    </div>
+  );
+};
+
+const Combo3 = ({ options, value }) => {
+  return (
+    <div className="combo--bg">
+      <svg width="20.896" height="12.948" viewBox="0 0 20.896 12.948">
+        <path
+          d="M6.912,13.825,0,6.912,6.912,0"
+          transform="translate(17.36 2.5) rotate(90)"
+          fill="none"
+          stroke="#3c423a"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="5"
+        />
+      </svg>
+
+      <div className=" filter-text date--bg">{value}</div>
+      <svg width="20.896" height="12.948" viewBox="0 0 20.896 12.948">
+        <path
+          d="M6.912,0,0,6.912l6.912,6.912"
+          transform="translate(3.536 10.448) rotate(-90)"
+          fill="none"
+          stroke="#3c423a"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="5"
+        />
+      </svg>
+    </div>
+  );
+};

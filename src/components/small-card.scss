@@ -62,13 +62,3 @@
   font-family: $label_card;
   color: $color1;
 }
-.small-card-wrapper > .label-card {
-  font-size: 0.9rem;
-  font-weight: bold;
-  font-family: $label_card;
-  color: $color2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0 0.4rem 10px 10px;
-}

@@ -40,13 +40,7 @@
     gap: 0.3rem;
     justify-content: center;
     align-items: center;
-    
-    div {
-      background-color: rgba(white, 0.3);
-      border-radius: 10px;
-      //align-self: center;
-      padding: .6rem;
-    }
+
   }
 }
 
@@ -64,4 +58,19 @@
   .button{
     cursor: pointer;
   }
+}
+
+//*****************DATE
+.date--bg{
+  background-color: rgba(white, 0.3);
+  border-radius: 10px;
+  padding: .6rem;
+}
+
+.combo--bg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
