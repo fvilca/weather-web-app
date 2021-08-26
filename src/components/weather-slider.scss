@@ -5,38 +5,29 @@
   justify-content: center;
   align-items: center;
   height: calc(200px + 5vw); //cambiar esto en IPAD y DESKTOP
-  svg {
+  .button--svg {
     width: calc(15px + 1vw);
     cursor: pointer;
-    //z-index: -1;
     margin: 10px;
-
-    &.left {
-      //background-color: orange;
-    }
-    &.right {
-      //background-color: orange;
-    }
+    border: 1px solid red;
   }
   .container-spring {
     position: relative;
-    //width: calc(200px + 5.5vw);
-    //height: calc(200px + 5.5vw);
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    //border: 1px solid red;
-    
 
     .spring--left {
       position: absolute;
-      //width: calc(50px + 2.5vw);
-      //height: calc(50px + 2.5vw);
-      width: 70%;
-      height: 70%;
+      width: calc(50px + 2.5vw);
+      height: calc(50px + 2.5vh);
       opacity: 0.9;
-      left: -20%;
+      left: -10%;
+      img {
+        width: calc(40px + 2.5vw);
+        height: calc(40px + 2.5vw);
+      }
     }
     .spring--middle {
       position: absolute;
@@ -51,30 +42,34 @@
     }
     .spring--right {
       position: absolute;
-      //width: calc(50px + 2.5vw);
-      //height: calc(5   0px + 2.5vh);
-      width: 70%;
-      height: 70%;
+      width: calc(50px + 2.5vw);
+      height: calc(50px + 2.5vh);
+      //width: 70%;
+      //height: 70%;
       opacity: 0.9;
-      right: -20%;
+      right: -10%;
+      img {
+        width: calc(40px + 2.5vw);
+        height: calc(40px + 2.5vw);
+      }
     }
   }
 }
 
-.container-left{
+.container-left {
   //width: calc(100px + 5.5vw);
-  //height: calc(100px + 5.5vw); 
+  //height: calc(100px + 5.5vw);
   width: 20%;
-  height: 60%;
+  height: 100%;
 }
-.container-middle{
+.container-middle {
   //width: calc(300px + 5.5vw);
   height: 100%;
   width: 50%;
 }
-.container-right{
-  //width: calc(100px + 5.5vw);
-  //height: calc(100px + 5.5vw); 
-  height: 60%;
-  width: 20%;
+.container-right {
+  width: calc(100px + 5.5vw);
+  height: calc(100px + 5.5vw);
+  //height: 100%;
+  //width: 20%;
 }

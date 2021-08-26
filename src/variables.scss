@@ -26,6 +26,17 @@ $label_menu_icon: 'Segoe WP bold';
 
 /** TEXT ****/
 
+.label-card, .mini-icon--label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: $label_card;
+  color: $color2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0.4rem 10px 10px;
+}
+
 $txt-filter:1.111rem;
 //! solo tiene sentido aquello q se va a reutilizar mucho por ejemplo parrafos, titulos
 
@@ -35,7 +46,7 @@ $txt-filter:1.111rem;
   font-size: 21px;
   color: $color2;
 }
-.filter--title--dark{
+.filter--title--dark, .slider-icon-label{
   font-family: $label_card;
   font-weight: bold;
   font-size: 21px;
