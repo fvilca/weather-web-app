@@ -13,8 +13,8 @@
   z-index: 1;
   .modal--bg {
     position: fixed;
-    opacity: 0.6;
-    background-color: black;
+    opacity: 0.58;
+    background-color: $color2;
     width: 100%;
     height: 100%;
     top: 0;
@@ -25,49 +25,67 @@
   .form {
     z-index: 2;
     background-color: $color3;
-    border-radius: 20px;
-    //width: 300px;
-    //height: 300px;
-    padding: 1rem;
+    border-radius: 23px;
+    width: 80vw;
+    height: 70vh;
+    overflow: hidden;
+  }
+}
+
+.modal .title {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .marker--left {
+    background-color: $color1;
+    border-radius: 10%;
+    width: 30px;
+    height: 30px;
+    left: -26px;
+    //line-height: 50px;
+    position: absolute;
   }
 }
 
 .form {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   .date {
-    margin: 8rem 0;
-    border: 1px dashed red;
+    //margin: 8rem 0;
     display: flex;
     gap: 0.3rem;
     justify-content: center;
     align-items: center;
-
   }
 }
 
-.filter--icon--modal{
+.filter--icon--modal {
   width: 20px;
   width: 20px;
   padding: 0rem;
 }
 
-.filter--buttons{
+.filter--buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
 
-  .button{
+  .button {
     cursor: pointer;
   }
 }
 
 //*****************DATE
-.date--bg{
+.date--bg {
   background-color: rgba(white, 0.3);
   border-radius: 10px;
-  padding: .6rem;
+  padding: 0.6rem;
 }
 
-.combo--bg{
+.combo--bg {
   display: flex;
   flex-direction: column;
   justify-content: center;

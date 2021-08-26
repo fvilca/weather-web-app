@@ -1,14 +1,18 @@
 import React from "react";
+import "./modal.scss";
+import { a} from "react-spring";
 
-export default function ModalDate({ title, handleModalVisible }) {
+export default function ModalDate({ style,title, handleModalVisible }) {
   return (
-    <div className="modal">
+    <a.div className="modal" style = {style}>
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
-        <h1 className="title">
-          <span className="title filter--title--light"> Filtro: </span>
-          <span className="title filter--title--dark"> Por Fecha </span>
-        </h1>
+        
+        <div className="title">
+          <div className="marker--left"></div>
+          <h3 className=" filter--title--light"> &nbsp; Filtro: </h3>
+          <h3 className=" filter--title--dark"> Por Fecha </h3>
+        </div>
 
         <DateSelector />
 
@@ -30,7 +34,7 @@ export default function ModalDate({ title, handleModalVisible }) {
           </svg>
 
           <svg
-            className="button"
+            className="button"  onClick={handleModalVisible}
             xmlns="http://www.w3.org/2000/svg"
             width="59.006"
             height="59.006"
@@ -46,7 +50,7 @@ export default function ModalDate({ title, handleModalVisible }) {
           </svg>
         </div>
       </form>
-    </div>
+    </a.div>
   );
 }
 

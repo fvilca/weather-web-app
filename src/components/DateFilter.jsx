@@ -1,16 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./filter.scss";
-import "./modal.scss";
 import ModalDate from "./ModalDate";
+import { a, useTransition, config } from "react-spring";
 
 const DateFilter = () => {
   const [visibleModal, setVisibleModal] = useState(false);
+  const transitionModal = useTransition(visibleModal, {
+    from: {
+      opacity: 0,
+      scale: 0.8,
+    },
+    enter: {
+      opacity: 1,
+      scale: 1,
+    },
+    leave: {
+      opacity: 0,
+      scale: 0.8,
+    },
+    config:config.gentle,
+  });
   const handleModalVisible = () => {
     setVisibleModal(!visibleModal);
   };
+  
+  const keyPress = useCallback(
+    (e) => {
+      if (e.key === "Escape" && visibleModal) {
+        setVisibleModal(false);
+      }
+    },
+    [setVisibleModal, visibleModal]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress);
+    return () => document.removeEventListener("keydown", keyPress);
+  }, [keyPress]);
+
 
   return (
-    <div className=" filter filter--date">
+    <div className="filter filter--date">
       <div className="filter--container" onClick={handleModalVisible}>
         <svg
           className="filter--icon"
@@ -45,7 +75,19 @@ const DateFilter = () => {
         </svg>
       </div>
 
-      {visibleModal && <ModalDate title="Por Fecha" handleModalVisible={handleModalVisible} />}
+      {transitionModal(
+        (style, visible) =>
+          visible && (
+            <ModalDate
+              style={style}
+              title="Por Fecha"
+              handleModalVisible={handleModalVisible}
+            />
+          )
+      )}
+      {/*visibleModal && (
+        <ModalDate title="Por Fecha" handleModalVisible={handleModalVisible} />
+      )*/}
     </div>
   );
 };
