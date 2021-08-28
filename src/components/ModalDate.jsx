@@ -8,11 +8,7 @@ export default function ModalDate({ style,title, handleModalVisible }) {
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
         
-        <div className="title">
-          <div className="marker--left"></div>
-          <h3 className=" filter--title--light"> &nbsp; Filtro: </h3>
-          <h3 className=" filter--title--dark"> Por Fecha </h3>
-        </div>
+        <Title/>
 
         <DateSelector />
 
@@ -106,3 +102,13 @@ const Combo3 = ({ options, value }) => {
     </div>
   );
 };
+const Title = () => {
+  return (
+    <div className="title">
+          <div className="marker--left"></div>
+          <h3 className=" filter--title--light"> &nbsp; Filtro: </h3>
+          <h3 className=" filter--title--dark">  &nbsp;  Por Fecha </h3>
+        </div>
+
+  )
+}

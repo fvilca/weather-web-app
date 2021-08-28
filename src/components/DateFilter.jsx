@@ -18,12 +18,12 @@ const DateFilter = () => {
       opacity: 0,
       scale: 0.8,
     },
-    config:config.gentle,
+    config: config.gentle,
   });
   const handleModalVisible = () => {
     setVisibleModal(!visibleModal);
   };
-  
+
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && visibleModal) {
@@ -37,7 +37,6 @@ const DateFilter = () => {
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
-
 
   return (
     <div className="filter filter--date">

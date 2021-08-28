@@ -40,6 +40,11 @@ $label_menu_icon: 'Segoe WP bold';
 $txt-filter:1.111rem;
 //! solo tiene sentido aquello q se va a reutilizar mucho por ejemplo parrafos, titulos
 
+.text--tag{
+  font-family: $font_paragraph;
+  font-size: 18px;
+  color: $color3;
+}
 .filter--title--light{
   font-family: $label_card;
   font-weight: bold;
@@ -59,6 +64,13 @@ $txt-filter:1.111rem;
   font-weight: bold;
   font-size: 25px;
   color: $color2;
+}
+
+.filter-text--dark{
+  font-family: $label_card;
+  font-weight: bold;
+  font-size: 25px;
+  color: $color1;
 }
 
 .slider-label{
