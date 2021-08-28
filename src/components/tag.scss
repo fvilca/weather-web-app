@@ -1,0 +1,26 @@
+@import "../variables";
+
+.container--tags {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 1rem;
+  //justify-content: start;
+  //align-items: auto;
+  //align-content: start;
+}
+.tag {
+  //flex: 0 1 auto;
+  margin: 2px;
+  padding: 0 .4rem;
+  border-radius: 8px;
+  background-color: $color2;
+  color: white;
+  cursor: pointer;
+  transition: all .5s;
+
+  &:hover{
+    background-color: $color1;
+  }
+
+}
