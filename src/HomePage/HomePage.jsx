@@ -7,6 +7,8 @@ import DateFilter from "../components/DateFilter";
 import { RatioWidget1, RatioWidget2 } from "../components/RatioWidget";
 import DayShiftWidget from "../components/DayShift";
 import WeatherSlider from "../components/WeatherSlider";
+import MapContainer from "./Sections/MapContainer";
+
 
 const dataHoursDay = [
   { hour: "0:00", temp: "-14", icon: "sunny" },
@@ -22,13 +24,14 @@ const dataHoursDay = [
   { hour: "0:00", temp: "-14", icon: "cloudy_d" },
   { hour: "0:00", temp: "-14", icon: "sunny" },
   { hour: "0:00", temp: "-14", icon: "sunny" },
-
 ];
-
+const {REACT_APP_GOOGLE_MAPS_API_KEY} = process.env;
+const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`;
 export default function HomePage() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    console.log("key : ", REACT_APP_GOOGLE_MAPS_API_KEY);
     if (hash === "") {
       window.scrollTo(0, 0);
     } else {
@@ -56,7 +59,14 @@ export default function HomePage() {
       <section id="sectionhours">
         <TempByHours />
       </section>
-      <section id="sectioncities">Ciudades</section>
+      <section id="sectioncities">
+        <MapContainer
+          googleMapURL={mapURL}
+          containerElement={<div style={{ height: "400px" }} />}
+          mapElement={<div style={{ height: "100%" }} />}
+          loadingElement={<div>Cargando Mapa</div>}
+        />
+      </section>
     </div>
   );
 }
@@ -68,8 +78,8 @@ const TempByHours = () => {
 
       {dataHoursDay.map((item, index) => (
         <div className="row">
-          <span className='list--temp--text'>{index}:00</span>
-          <span className='list--temp--text'>
+          <span className="list--temp--text">{index}:00</span>
+          <span className="list--temp--text">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="17.431"
@@ -93,11 +103,10 @@ const TempByHours = () => {
                 />
               </g>
             </svg>
-
             {item.temp}°
           </span>
           <img
-          className='icon'
+            className="icon"
             src={require("../images/" + item.icon + "_outline.svg").default}
             alt=""
           />
