@@ -1,7 +1,7 @@
 import "./home_page.scss";
 import TempWidget from "../components/WidgetTemp";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CityFilter from "./../components/CityFilter";
 import DateFilter from "../components/DateFilter";
 import { RatioWidget1, RatioWidget2 } from "../components/RatioWidget";
@@ -27,11 +27,15 @@ const dataHoursDay = [
 ];
 const {REACT_APP_GOOGLE_MAPS_API_KEY} = process.env;
 const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`;
+
+
 export default function HomePage() {
+
+  const [city, setCity] = useState('');
+  
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    console.log("key : ", REACT_APP_GOOGLE_MAPS_API_KEY);
     if (hash === "") {
       window.scrollTo(0, 0);
     } else {
@@ -60,12 +64,12 @@ export default function HomePage() {
         <TempByHours />
       </section>
       <section id="sectioncities">
-        <MapContainer
+        {/*<MapContainer
           googleMapURL={mapURL}
           containerElement={<div style={{ height: "400px" }} />}
           mapElement={<div style={{ height: "100%" }} />}
           loadingElement={<div>Cargando Mapa</div>}
-        />
+        />*/}
       </section>
     </div>
   );
@@ -77,7 +81,7 @@ const TempByHours = () => {
       <h1>24 Horas del dia</h1>
 
       {dataHoursDay.map((item, index) => (
-        <div className="row">
+        <div className="row" key={index}>
           <span className="list--temp--text">{index}:00</span>
           <span className="list--temp--text">
             <svg

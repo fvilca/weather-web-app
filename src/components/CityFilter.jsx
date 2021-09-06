@@ -64,9 +64,9 @@ const CityFilter = () => {
             transform="translate(3.536 10.843) rotate(-90)"
             fill="none"
             stroke="#939482"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="5"
           />
         </svg>
       </div>

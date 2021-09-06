@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./modal.scss";
 import "./tag.scss";
+import "./search.scss";
 import { a } from "react-spring";
+import PlacesAutocomplete from "react-places-autocomplete";
+
 const popularCities = "Iquique Guadalajara Cali Beni SaoPaulo Guayaquil".split(
   " "
 );
@@ -11,12 +14,11 @@ export default function ModalCity({ style, title, handleModalVisible }) {
     <a.div className="modal" style={style}>
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
-
-        <Title/>
+        <Title />
         <Tags />
         <SearchCity />
         <ActionButtons handleModalVisible={handleModalVisible} />
-      </form> nb
+      </form>
     </a.div>
   );
 }
@@ -24,46 +26,74 @@ export default function ModalCity({ style, title, handleModalVisible }) {
 const Title = () => {
   return (
     <div className="title">
-          <div className="marker--left"></div>
-          <h3 className=" filter--title--light"> &nbsp; Filtro: </h3>
-          <h3 className=" filter--title--dark">  &nbsp;  Por Ciudad </h3>
-        </div>
-
-  )
-}
+      <div className="marker--left"></div>
+      <h3 className=" filter--title--light"> &nbsp; Filtro: </h3>
+      <h3 className=" filter--title--dark"> &nbsp; Por Ciudad </h3>
+    </div>
+  );
+};
 const Tags = ({ data }) => {
   return (
     <div className="container--tags">
       {popularCities.map((city, index) => (
-        <div className="tag text--tag">{city}</div>
+        <div key={index} className="tag text--tag">{city}</div>
       ))}
     </div>
   );
 };
 const SearchCity = () => {
-  useEffect(() => {
-    const focus = document.getElementById("search");
-    return () => {
-      //focus.autofocus();
-    };
-  }, []);
-
+  const [inputValue, setInputValue] = useState("");
+  const handleSelect = (params) => {
+    console.log("select:", params);
+    setInputValue(params);
+  };
   return (
-    <div className="form--search">
-      <svg
-        className="filter--icon"
-        width="36.856"
-        height="36.856"
-        viewBox="0 0 36.856 36.856"
-      >
-        <path
-          d="M28.409,23.5a14.576,14.576,0,1,0-4.907,4.9L33.392,38.3l4.9-4.907ZM15.982,24.98a8.992,8.992,0,1,1,9-8.986,9.006,9.006,0,0,1-9,8.986Z"
-          transform="translate(-1.44 -1.44)"
-          fill="#939482"
-        />
-      </svg>
-      <input className="filter-text--dark" type="text" name="search" id="search" placeholder='Buscar...' />
-    </div>
+    
+      <PlacesAutocomplete value={inputValue} onChange={setInputValue} onSelect={handleSelect}>
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div className="form--search">
+            
+            <div className="search--header">
+              
+              <input
+                {...getInputProps()}
+                placeholder="Ingresa un Lugar ..."
+                autoFocus
+                className="filter-text--dark"
+              />
+              <img 
+                className="filter--icon"
+                //src={require("../images/search.svg").default}
+                src="../images/search.svg"
+                alt=""
+              />
+            </div>
+
+            <div className="search--detail">
+              {loading && <div>Cargando...</div>}
+              {suggestions.map((suggestion,index) => {
+                const className = suggestion.active
+                  ? "suggestion-item--active item--detail"
+                  : "suggestion-item item--detail";
+                const style = suggestion.active
+                  ? { backgroundColor: "#939482", cursor: "pointer" }
+                  : { backgroundColor: "#d0d7bf", cursor: "pointer" };
+                return (
+                  <div key={index}
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
+        )}
+      </PlacesAutocomplete>
   );
 };
 const ActionButtons = ({ handleModalVisible }) => {

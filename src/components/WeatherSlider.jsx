@@ -88,19 +88,17 @@ const WeatherSlider = () => {
       >
         <path
           id="Icon_feather-chevron-left"
-          data-name="Icon feather-chevron-left"
           d="M24.192,30.384,13.5,19.692,24.192,9"
           transform="translate(-11 -5.464)"
           fill="none"
           stroke="#939482"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="5"
         />
       </svg>
       <div className="container-spring container-middle">
         {tSpring((style, i, j) => {
-          console.log("spring-m:", i);
           return (
             <a.div className="spring--middle" style={style}>
               <img
@@ -126,19 +124,17 @@ const WeatherSlider = () => {
       >
         <path
           id="Icon_feather-chevron-left"
-          data-name="Icon feather-chevron-left"
           d="M10.692,21.384,0,10.692,10.692,0"
           transform="translate(14.228 24.92) rotate(180)"
           fill="none"
           stroke="#939482"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="5"
         />
       </svg>
       <div className="container-spring container-right">
         {tSpring((style, i, j) => {
-          console.log("spring-r:", i);
           return (
             <a.div className="spring--right" style={style}>
               <img

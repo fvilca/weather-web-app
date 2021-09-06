@@ -81,9 +81,9 @@ const Combo3 = ({ options, value }) => {
           transform="translate(17.36 2.5) rotate(90)"
           fill="none"
           stroke="#3c423a"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="5"
         />
       </svg>
 
@@ -94,9 +94,9 @@ const Combo3 = ({ options, value }) => {
           transform="translate(3.536 10.448) rotate(-90)"
           fill="none"
           stroke="#3c423a"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="5"
         />
       </svg>
     </div>
