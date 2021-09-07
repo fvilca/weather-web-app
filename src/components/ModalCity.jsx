@@ -29,7 +29,11 @@ export default function ModalCity({
       <form className="form">
         <Title />
         <Tags />
-        <SearchCity inputValue={inputValue} setInputValue={setInputValue} handleSelect={handleSelect} />
+        <SearchCity
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          handleSelect={handleSelect}
+        />
         <ActionButtons
           handleModalVisible={handleModalVisible}
           handleClick={handleClick}
@@ -59,7 +63,7 @@ const Tags = ({ data }) => {
     </div>
   );
 };
-const SearchCity = ({inputValue,setInputValue, handleSelect}) => {
+const SearchCity = ({ inputValue, setInputValue, handleSelect }) => {
   return (
     <PlacesAutocomplete
       value={inputValue}
@@ -86,11 +90,11 @@ const SearchCity = ({inputValue,setInputValue, handleSelect}) => {
             {loading && <div>Cargando...</div>}
             {suggestions.map((suggestion, index) => {
               const className = suggestion.active
-                ? "suggestion-item--active item--detail"
+                ? "suggestion-item--active item--detail--active"
                 : "suggestion-item item--detail";
               const style = suggestion.active
-                ? { backgroundColor: "#939482", cursor: "pointer" }
-                : { backgroundColor: "#d0d7bf", cursor: "pointer" };
+                ? { cursor: "pointer", color:'#3c423a', fontFamily: "Segoe WP bold", fontWeight: 'bold', fontSize: '24px' }
+                : { cursor: "pointer", color:'#939482', fontFamily: "Segoe WP bold", fontWeight: 'bold', fontSize: '24px' }
               return (
                 <div
                   key={index}
@@ -99,7 +103,7 @@ const SearchCity = ({inputValue,setInputValue, handleSelect}) => {
                     style,
                   })}
                 >
-                  <span>{suggestion.description}</span>
+                  {suggestion.description}
                 </div>
               );
             })}
@@ -114,7 +118,10 @@ const ActionButtons = ({ handleModalVisible, handleClick }) => {
     <div className="filter--buttons">
       <svg
         className="button"
-        onClick= {()=>{handleClick(); handleModalVisible() }}
+        onClick={() => {
+          handleClick();
+          handleModalVisible();
+        }}
         width="59.006"
         height="59.006"
         viewBox="0 0 59.006 59.006"
