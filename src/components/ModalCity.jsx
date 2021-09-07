@@ -9,15 +9,31 @@ const popularCities = "Iquique Guadalajara Cali Beni SaoPaulo Guayaquil".split(
   " "
 );
 
-export default function ModalCity({ style, title, handleModalVisible }) {
+export default function ModalCity({
+  style,
+  title,
+  handleModalVisible,
+  setCity,
+}) {
+  const [inputValue, setInputValue] = useState("");
+  const handleSelect = (params) => {
+    setInputValue(params);
+  };
+  const handleClick = () => {
+    setCity(inputValue);
+  };
+
   return (
     <a.div className="modal" style={style}>
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
         <Title />
         <Tags />
-        <SearchCity />
-        <ActionButtons handleModalVisible={handleModalVisible} />
+        <SearchCity inputValue={inputValue} setInputValue={setInputValue} handleSelect={handleSelect} />
+        <ActionButtons
+          handleModalVisible={handleModalVisible}
+          handleClick={handleClick}
+        />
       </form>
     </a.div>
   );
@@ -36,72 +52,69 @@ const Tags = ({ data }) => {
   return (
     <div className="container--tags">
       {popularCities.map((city, index) => (
-        <div key={index} className="tag text--tag">{city}</div>
+        <div key={index} className="tag text--tag">
+          {city}
+        </div>
       ))}
     </div>
   );
 };
-const SearchCity = () => {
-  const [inputValue, setInputValue] = useState("");
-  const handleSelect = (params) => {
-    console.log("select:", params);
-    setInputValue(params);
-  };
+const SearchCity = ({inputValue,setInputValue, handleSelect}) => {
   return (
-    
-      <PlacesAutocomplete value={inputValue} onChange={setInputValue} onSelect={handleSelect}>
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div className="form--search">
-            
-            <div className="search--header">
-              
-              <input
-                {...getInputProps()}
-                placeholder="Ingresa un Lugar ..."
-                autoFocus
-                className="filter-text--dark"
-              />
-              <img 
-                className="filter--icon"
-                //src={require("../images/search.svg").default}
-                src="../images/search.svg"
-                alt=""
-              />
-            </div>
-
-            <div className="search--detail">
-              {loading && <div>Cargando...</div>}
-              {suggestions.map((suggestion,index) => {
-                const className = suggestion.active
-                  ? "suggestion-item--active item--detail"
-                  : "suggestion-item item--detail";
-                const style = suggestion.active
-                  ? { backgroundColor: "#939482", cursor: "pointer" }
-                  : { backgroundColor: "#d0d7bf", cursor: "pointer" };
-                return (
-                  <div key={index}
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
-                    })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
-
+    <PlacesAutocomplete
+      value={inputValue}
+      onChange={setInputValue}
+      onSelect={handleSelect}
+    >
+      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div className="form--search">
+          <div className="search--header">
+            <input
+              {...getInputProps()}
+              placeholder="Ingresa un Lugar ..."
+              autoFocus
+              className="filter-text--dark"
+            />
+            <img
+              className="filter--icon"
+              src={require("../images/search.svg").default}
+              alt=""
+            />
           </div>
-        )}
-      </PlacesAutocomplete>
+
+          <div className="search--detail">
+            {loading && <div>Cargando...</div>}
+            {suggestions.map((suggestion, index) => {
+              const className = suggestion.active
+                ? "suggestion-item--active item--detail"
+                : "suggestion-item item--detail";
+              const style = suggestion.active
+                ? { backgroundColor: "#939482", cursor: "pointer" }
+                : { backgroundColor: "#d0d7bf", cursor: "pointer" };
+              return (
+                <div
+                  key={index}
+                  {...getSuggestionItemProps(suggestion, {
+                    className,
+                    style,
+                  })}
+                >
+                  <span>{suggestion.description}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </PlacesAutocomplete>
   );
 };
-const ActionButtons = ({ handleModalVisible }) => {
+const ActionButtons = ({ handleModalVisible, handleClick }) => {
   return (
     <div className="filter--buttons">
       <svg
         className="button"
-        xmlns="http://www.w3.org/2000/svg"
+        onClick= {()=>{handleClick(); handleModalVisible() }}
         width="59.006"
         height="59.006"
         viewBox="0 0 59.006 59.006"

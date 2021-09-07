@@ -3,7 +3,8 @@ import "./filter.scss";
 import { a, useTransition, config } from "react-spring";
 import ModalCity from "./ModalCity";
 
-const CityFilter = () => {
+const CityFilter = (props) => {
+
   const [visibleModal, setVisibleModal] = useState(false);
   const transitionModal = useTransition(visibleModal, {
     from: {
@@ -33,6 +34,7 @@ const CityFilter = () => {
   );
 
   useEffect(() => {
+    
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
@@ -52,7 +54,7 @@ const CityFilter = () => {
             fill="#939482"
           />
         </svg>
-        <div className="filter--text">Arequipa, PE</div>
+        <div className="filter--text">{props.city[0]}</div>
         <svg
           className="filter--arrow"
           width="21.685"
@@ -78,6 +80,7 @@ const CityFilter = () => {
               style={style}
               title="Por Ciudad"
               handleModalVisible={handleModalVisible}
+              setCity={props.city[1]}
             />
           )
       )}

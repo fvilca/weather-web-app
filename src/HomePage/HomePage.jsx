@@ -28,11 +28,11 @@ const dataHoursDay = [
 const {REACT_APP_GOOGLE_MAPS_API_KEY} = process.env;
 const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`;
 
+const initialPlace= { loc:'Arequipa', lng:0, lat:0}
 
 export default function HomePage() {
 
-  const [city, setCity] = useState('');
-  
+  const city = useState('Arequipa, PE...');
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function HomePage() {
       <WeatherSlider />
       <TempWidget />
       <DateFilter />
-      <CityFilter />
+      <CityFilter city={city} />
 
       <DayShiftWidget />
       <RatioWidget1 />
