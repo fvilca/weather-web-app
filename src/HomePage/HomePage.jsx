@@ -32,7 +32,7 @@ const initialPlace= { loc:'Arequipa', lng:0, lat:0}
 
 export default function HomePage() {
 
-  const city = useState('Arequipa, PE...');
+  const city = useState(initialPlace);
   const { pathname, hash } = useLocation();
 
   useEffect(() => {

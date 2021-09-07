@@ -20,7 +20,8 @@ export default function ModalCity({
     setInputValue(params);
   };
   const handleClick = () => {
-    setCity(inputValue);
+    const newCity = { loc: inputValue, lat: 0, lng: 0 };
+    setCity(newCity);
   };
 
   return (
@@ -93,8 +94,20 @@ const SearchCity = ({ inputValue, setInputValue, handleSelect }) => {
                 ? "suggestion-item--active item--detail--active"
                 : "suggestion-item item--detail";
               const style = suggestion.active
-                ? { cursor: "pointer", color:'#3c423a', fontFamily: "Segoe WP bold", fontWeight: 'bold', fontSize: '24px' }
-                : { cursor: "pointer", color:'#939482', fontFamily: "Segoe WP bold", fontWeight: 'bold', fontSize: '24px' }
+                ? {
+                    cursor: "pointer",
+                    color: "#3c423a",
+                    fontFamily: "Segoe WP bold",
+                    fontWeight: "bold",
+                    fontSize: "24px",
+                  }
+                : {
+                    cursor: "pointer",
+                    color: "#939482",
+                    fontFamily: "Segoe WP bold",
+                    fontWeight: "bold",
+                    fontSize: "24px",
+                  };
               return (
                 <div
                   key={index}

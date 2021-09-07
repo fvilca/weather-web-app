@@ -4,7 +4,7 @@ import { a, useTransition, config } from "react-spring";
 import ModalCity from "./ModalCity";
 
 const CityFilter = (props) => {
-
+console.log('props',props.city)
   const [visibleModal, setVisibleModal] = useState(false);
   const transitionModal = useTransition(visibleModal, {
     from: {
@@ -54,7 +54,7 @@ const CityFilter = (props) => {
             fill="#939482"
           />
         </svg>
-        <div className="filter--text">{props.city[0]}</div>
+        <div className="filter--text">{props.city[0].loc}</div>
         <svg
           className="filter--arrow"
           width="21.685"
