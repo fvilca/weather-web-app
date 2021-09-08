@@ -3,7 +3,7 @@ import "./modal.scss";
 import "./tag.scss";
 import "./search.scss";
 import { a } from "react-spring";
-import PlacesAutocomplete from "react-places-autocomplete";
+import PlacesAutocomplete, {geocodeByAddress, getLatLng } from "react-places-autocomplete";
 
 const popularCities = "Iquique Guadalajara Cali Beni SaoPaulo Guayaquil".split(
   " "
@@ -19,9 +19,13 @@ export default function ModalCity({
   const handleSelect = (params) => {
     setInputValue(params);
   };
-  const handleClick = () => {
-    const newCity = { loc: inputValue, lat: 0, lng: 0 };
+  const handleClick = async () => {
+    
+    const geo = await geocodeByAddress(inputValue);
+    const latLng = await getLatLng(geo[0]);
+    const newCity = { ...latLng, loc: inputValue, };
     setCity(newCity);
+    console.log(newCity)
   };
 
   return (
@@ -110,7 +114,7 @@ const SearchCity = ({ inputValue, setInputValue, handleSelect }) => {
                   };
               return (
                 <div
-                  key={index}
+                  key={suggestion.placeId}
                   {...getSuggestionItemProps(suggestion, {
                     className,
                     style,
