@@ -23,41 +23,41 @@
     z-index: 1;
   }
   .form {
+    padding: 1rem 0;
     z-index: 2;
     background-color: $color3;
     border-radius: 23px;
     width: 80vw;
-    height: 70vh;
     overflow: hidden;
-  }
-}
-
-.modal .title {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  .marker--left {
-    background-color: $color1;
-    border-radius: 10%;
-    width: 30px;
-    height: 30px;
-    left: -26px;
-    //line-height: 50px;
-    position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
   }
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   .date {
-    //margin: 8rem 0;
+    //DATE
     display: flex;
     gap: 0.3rem;
     justify-content: center;
     align-items: center;
+  }
+  .title {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .marker--left {
+      background-color: $color1;
+      border-radius: 10%;
+      width: 30px;
+      height: 30px;
+      left: -26px;
+      //line-height: 50px;
+      position: absolute;
+    }
   }
 }
 
@@ -71,29 +71,40 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  
+
   .button {
     cursor: pointer;
     transition: all 0.2s;
     &:hover {
       transform: scale(1.1);
-      
     }
   }
 }
 
-//*****************DATE
 .date--bg {
+  /*DATE*/
   background-color: rgba(white, 0.3);
   border-radius: 10px;
   padding: 0.6rem;
 }
 
 .combo--bg {
+  /*DATE*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
   gap: 1rem;
+  
 }
 
+.form {
+  .date {
+    //DATE
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+    align-items: center;
+  }
+}

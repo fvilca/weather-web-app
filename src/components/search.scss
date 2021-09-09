@@ -55,6 +55,7 @@
   height: 150px;
   overflow-y: scroll;
   @include scrollbar();
+  margin-bottom: 1rem;
 }
 .item--detail {
   text-overflow: ellipsis;

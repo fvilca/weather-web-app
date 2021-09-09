@@ -3,7 +3,10 @@ import "./modal.scss";
 import "./tag.scss";
 import "./search.scss";
 import { a } from "react-spring";
-import PlacesAutocomplete, {geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from "react-places-autocomplete";
 
 const popularCities = "Iquique Guadalajara Cali Beni SaoPaulo Guayaquil".split(
   " "
@@ -20,25 +23,26 @@ export default function ModalCity({
     setInputValue(params);
   };
   const handleClick = async () => {
-    
     const geo = await geocodeByAddress(inputValue);
     const latLng = await getLatLng(geo[0]);
-    const newCity = { ...latLng, loc: inputValue, };
+    const newCity = { ...latLng, loc: inputValue };
     setCity(newCity);
-    console.log(newCity)
+    console.log(newCity);
   };
 
   return (
     <a.div className="modal" style={style}>
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
-        <Title />
-        <Tags />
-        <SearchCity
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          handleSelect={handleSelect}
-        />
+        <div>
+          <Title />
+          <Tags />
+          <SearchCity
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            handleSelect={handleSelect}
+          />
+        </div>
         <ActionButtons
           handleModalVisible={handleModalVisible}
           handleClick={handleClick}
