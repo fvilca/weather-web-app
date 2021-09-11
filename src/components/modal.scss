@@ -29,7 +29,7 @@
     border-radius: 23px;
     width: 80vw;
     overflow: hidden;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between
@@ -94,7 +94,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: .3rem;
   gap: 1rem;
   
 }
@@ -103,8 +103,9 @@
   .date {
     //DATE
     display: flex;
-    gap: 0.3rem;
+    gap: 0rem;
     justify-content: center;
     align-items: center;
+    padding: 2rem 0;
   }
 }

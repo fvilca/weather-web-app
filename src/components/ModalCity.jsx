@@ -27,7 +27,6 @@ export default function ModalCity({
     const latLng = await getLatLng(geo[0]);
     const newCity = { ...latLng, loc: inputValue };
     setCity(newCity);
-    console.log(newCity);
   };
 
   return (
@@ -35,7 +34,7 @@ export default function ModalCity({
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
         <div>
-          <Title />
+          <Title /> 
           <Tags />
           <SearchCity
             inputValue={inputValue}

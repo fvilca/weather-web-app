@@ -1,10 +1,26 @@
 import React, { useState, useCallback, useEffect } from "react";
 import "./filter.scss";
 import ModalDate from "./ModalDate";
-import { a, useTransition, config } from "react-spring";
+import { useTransition, config } from "react-spring";
+
+const getCurrentDate = () => {
+  const initialDate = {
+    day: 0,
+    month: "Mayo",
+    year: 2021,
+  };
+  return initialDate;
+};
 
 const DateFilter = () => {
+
+  const [date, setDate] = useState(getCurrentDate());
   const [visibleModal, setVisibleModal] = useState(false);
+
+  const handleDay = (param) => {
+    console.log("Day: param: ", param);
+    setDate({ ...date, day: param });
+  };
   const transitionModal = useTransition(visibleModal, {
     from: {
       opacity: 0,
@@ -23,7 +39,6 @@ const DateFilter = () => {
   const handleModalVisible = () => {
     setVisibleModal(!visibleModal);
   };
-
   const keyPress = useCallback(
     (e) => {
       if (e.key === "Escape" && visibleModal) {
@@ -32,14 +47,15 @@ const DateFilter = () => {
     },
     [setVisibleModal, visibleModal]
   );
-
   useEffect(() => {
+  
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
   return (
-    <div className="filter filter--date">
+    <div
+      className="filter filter--date">
       <div className="filter--container" onClick={handleModalVisible}>
         <svg
           className="filter--icon"
@@ -53,7 +69,10 @@ const DateFilter = () => {
             fill="#939482"
           />
         </svg>
-        <div className="filter--text"> Mayo, 24 </div>
+        <div className="filter--text">
+        {date.month},{' '}
+          {date.day}
+        </div>
         <svg
           className="filter--arrow"
           width="21.685"
@@ -80,12 +99,11 @@ const DateFilter = () => {
               style={style}
               title="Por Fecha"
               handleModalVisible={handleModalVisible}
+              date={date}
+              handleDay={handleDay}
             />
           )
-      )}
-      {/*visibleModal && (
-        <ModalDate title="Por Fecha" handleModalVisible={handleModalVisible} />
-      )*/}
+          )}
     </div>
   );
 };
