@@ -2,15 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import "./filter.scss";
 import ModalDate from "./ModalDate";
 import { useTransition, config } from "react-spring";
-
-const getCurrentDate = () => {
-  const initialDate = {
-    day: 0,
-    month: "Mayo",
-    year: 2021,
-  };
-  return initialDate;
-};
+import { getDayfromDate, getMonthfromDate, getYearfromDate, getCurrentDate } from "./DateUtils";
 
 const DateFilter = () => {
 
@@ -48,7 +40,7 @@ const DateFilter = () => {
     [setVisibleModal, visibleModal]
   );
   useEffect(() => {
-  
+
     document.addEventListener("keydown", keyPress);
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
@@ -70,7 +62,7 @@ const DateFilter = () => {
           />
         </svg>
         <div className="filter--text">
-        {date.month},{' '}
+          {date.month},{' '}
           {date.day}
         </div>
         <svg
@@ -103,7 +95,7 @@ const DateFilter = () => {
               handleDay={handleDay}
             />
           )
-          )}
+      )}
     </div>
   );
 };
