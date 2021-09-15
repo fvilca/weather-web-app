@@ -2,16 +2,21 @@ import React, { useState, useCallback, useEffect } from "react";
 import "./filter.scss";
 import ModalDate from "./ModalDate";
 import { useTransition, config } from "react-spring";
-import { getDayfromDate, getMonthfromDate, getYearfromDate, getCurrentDate } from "./DateUtils";
+import {
+  getDayfromDate,
+  getMonthfromDate,
+  getYearfromDate,
+  getCurrentDate,
+  getMonthName
+} from "./DateUtils";
 
 const DateFilter = () => {
 
   const [date, setDate] = useState(getCurrentDate());
   const [visibleModal, setVisibleModal] = useState(false);
 
-  const handleDay = (param) => {
-    console.log("Day: param: ", param);
-    setDate({ ...date, day: param });
+  const handleDate = (d, m, y) => {
+    setDate(() => ({ day: d, month: m, year: y }));
   };
   const transitionModal = useTransition(visibleModal, {
     from: {
@@ -40,10 +45,9 @@ const DateFilter = () => {
     [setVisibleModal, visibleModal]
   );
   useEffect(() => {
-
-    document.addEventListener("keydown", keyPress);
-    return () => document.removeEventListener("keydown", keyPress);
-  }, [keyPress]);
+    /*document.addEventListener("keydown", keyPress);
+    return () => document.removeEventListener("keydown", keyPress);*/
+  }, []);
 
   return (
     <div
@@ -62,8 +66,9 @@ const DateFilter = () => {
           />
         </svg>
         <div className="filter--text">
-          {date.month},{' '}
-          {date.day}
+          {date.day}{', '}
+          {getMonthName(date.month - 1)}{', '}
+          {date.year}
         </div>
         <svg
           className="filter--arrow"
@@ -92,7 +97,7 @@ const DateFilter = () => {
               title="Por Fecha"
               handleModalVisible={handleModalVisible}
               date={date}
-              handleDay={handleDay}
+              handleDate={handleDate}
             />
           )
       )}

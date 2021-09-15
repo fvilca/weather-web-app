@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16.826" height="16.826" viewBox="0 0 16.826 16.826">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#36fff1"/>
+      <stop offset="1" stop-color="#1159ff"/>
+    </radialGradient>
+  </defs>
+  <path id="Icon_open-moon" data-name="Icon open-moon" d="M5.883,0A8.639,8.639,0,1,0,16.826,10.943a8.956,8.956,0,0,1-2.768.476A8.648,8.648,0,0,1,5.407,2.768,8.361,8.361,0,0,1,5.883,0Z" fill="url(#radial-gradient)"/>
+</svg>

@@ -18,27 +18,11 @@ y cada componente ya tiene caracteristicas de vsuales
 #sectionhours {
   width: 100%;
   grid-area: hours;
-  .row{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: .5rem;
-    background: rgba($color3, 1);
-    transition: background  .5s ease-in;
-    
-  }
-  
-  .row:nth-child(even) {background: rgba(#C9CDB6, $alpha: 1); }
-  //.row:nth-child(odd) {background: rgba(#C9CDB6, $alpha: 0.5); }
-  .row:hover{
-    background: rgba($color2, 1);
-    cursor: pointer;
-  }
-  
-}
-.row .icon{
-  width: 50px;
-  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 #sectioncities {

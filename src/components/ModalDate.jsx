@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./modal.scss";
 import { a } from "react-spring";
-import { getDayfromDate, getMonthfromDate, getYearfromDate } from "./DateUtils";
+import { getDayfromDate, getMonthfromDate, getMonthName, getYearfromDate } from "./DateUtils";
 
-export default function ModalDate({ style, title, handleModalVisible, date, handleDay }) {
+export default function ModalDate({ style, title, handleModalVisible, date, handleDate }) {
 
   const [day, setDay] = useState(0)
   const [month, setMonth] = useState('');
@@ -17,11 +17,11 @@ export default function ModalDate({ style, title, handleModalVisible, date, hand
 
   return (
     <a.div className="modal" style={style}>
-      <div className="modal--bg" onClick={handleModalVisible} />
+      <div className="modal--bg"/>
       <form className="form">
         <Title />
         <DateSelector day={day} month={month} year={year} setDay={setDay} setMonth={setMonth} setYear={setYear} />
-        <ActionButtons handleModalVisible={handleModalVisible} day={day} handleDay={handleDay} />
+        <ActionButtons handleModalVisible={handleModalVisible} day={day} month={month}  year={year} handleDate={handleDate} />
       </form>
     </a.div>
   );
@@ -42,30 +42,23 @@ const DateSelector = ({ day, month, year, setDay, setMonth, setYear }) => {
           fill="#939482"
         />
       </svg>
-      <Combo3 value={day} setValue={setDay} />
-      <Combo3 value={month} setValue={setMonth} />
-      <Combo3 value={year} setValue={setYear} />
+      <Combo3 name={day} value={day} setValue={setDay} />
+      <Combo3 name={getMonthName(month-1)} value={month} setValue={setMonth} />
+      <Combo3 name={year} value={year} setValue={setYear} />
     </div>
   );
 };
 
-const Combo3 = ({ value, setValue }) => {
+const Combo3 = ({ name, value, setValue }) => {
 
-  const increment = (param) => {
-    console.log('+ :', param);
-    setValue(value+1)
-  }
-  const decrement = (e) => {
-    setValue(-1)
-  }
+  const increment = () => setValue(value + 1)
+  const decrement = () => setValue(value - 1)
 
   return (
     <div className="combo--bg">
-      <img onClick={()=>increment(1)} src={require('../images/arrow_up.svg').default} alt='' />
-      <div className=" filter-text date--bg">{value}</div>
-      <button onClick={decrement}>
-        <img src={require('../images/arrow_down.svg').default} alt='' />
-      </button>
+      <img onClick={increment} src={require('../images/arrow_up.svg').default} alt='' />
+      <div className=" filter-text date--bg">{name}</div>
+        <img onClick={decrement} src={require('../images/arrow_down.svg').default} alt='' />
     </div>
   );
 };
@@ -79,13 +72,13 @@ const Title = () => {
   );
 };
 
-const ActionButtons = ({ handleModalVisible, day, handleDay }) => {
+const ActionButtons = ({ handleModalVisible, day, month, year, handleDate }) => {
   return (
     <div className="filter--buttons">
       <svg
         className="button"
         onClick={() => {
-          handleDay(day);
+          handleDate(day,month, year);
           handleModalVisible();
         }}
         width="59.006"
