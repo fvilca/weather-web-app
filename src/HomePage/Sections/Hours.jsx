@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import "./hours.scss";
-import { useSpring, a } from 'react-spring'
+import { useSpring, a, useTransition, config } from 'react-spring'
 
 
 const dataHoursDay = [
     { hour: "0:00", temp: "12", icon: "sunny" },
-    { hour: "0:00", temp: "13", icon: "cloudy_d" },
-    { hour: "0:00", temp: "14", icon: "cloudy_n" },
+    { hour: "0:00", temp: "13", icon: "sunny" },
+    /*{ hour: "0:00", temp: "14", icon: "cloudy_n" },
     { hour: "0:00", temp: "16", icon: "cloudy_d" },
     { hour: "0:00", temp: "18", icon: "cloudy_n" },
     { hour: "0:00", temp: "24", icon: "sunny" },
@@ -15,21 +15,21 @@ const dataHoursDay = [
     { hour: "0:00", temp: "14", icon: "cloudy_d" },
     { hour: "0:00", temp: "14", icon: "cloudy_d" },
     { hour: "0:00", temp: "14", icon: "sunny" },
-    { hour: "0:00", temp: "14", icon: "sunny" },
+    { hour: "0:00", temp: "14", icon: "sunny" },*/
 ];
 const dataHoursNight = [
-    { hour: "0:00", temp: "-12", icon: "sunny" },
-    { hour: "0:00", temp: "-14", icon: "cloudy_d" },
+    { hour: "0:00", temp: "-12", icon: "cloudy_n" },
+    { hour: "0:00", temp: "-14", icon: "cloudy_n" },
     { hour: "0:00", temp: "-14", icon: "cloudy_n" },
     { hour: "0:00", temp: "-14", icon: "cloudy_d" },
-    { hour: "0:00", temp: "-14", icon: "cloudy_n" },
+    /*{ hour: "0:00", temp: "-14", icon: "cloudy_n" },
     { hour: "0:00", temp: "-14", icon: "sunny" },
     { hour: "0:00", temp: "-14", icon: "sunny" },
     { hour: "0:00", temp: "-14", icon: "cloudy_d" },
     { hour: "0:00", temp: "-14", icon: "cloudy_d" },
     { hour: "0:00", temp: "-14", icon: "cloudy_d" },
     { hour: "0:00", temp: "-14", icon: "sunny" },
-    { hour: "0:00", temp: "-14", icon: "sunny" },
+    { hour: "0:00", temp: "-14", icon: "sunny" },*/
 ];
 
 export const Hours = () => {
@@ -38,31 +38,53 @@ export const Hours = () => {
     const spring = useSpring({ x: turn ? 0 : 30 })
     const spring2 = useSpring({ opacity: turn ? 0 : 1 })
     const spring3 = useSpring({ x: 30, opacity: turn ? 1 : 0 })
+    const transition = useTransition(turn, {
+        from: { opacity: 0, x:turn?40:-40},
+        enter: { opacity: 1, x:0 },
+        leave: { opacity: 0, x:0},
+        config: { config: config.default },
+        //delay:1000,
+    })
     const handleTurnTime = () => {
         setTurn(!turn)
     }
 
-    return ( 
+    const style = {}
+    return (
         <div className='container--hours'>
             <div onClick={handleTurnTime} className="bi--option--container">
                 <a.div className="bi--option--circle" style={spring}></a.div>
                 <a.div style={spring3} className="option--day"></a.div>
                 <a.div style={spring2} className="option--night"></a.div>
             </div><br />
-            {turn
-                ? <TempByHours data={dataHoursDay} />
-                : <TempByHours data={dataHoursNight} />}
+            <div className="transition--hours--container">
+                {transition(
+                    (style, visible) => (
+                        visible
+                            ? <TempByHours style={style} data={dataHoursDay} />
+                            : <TempByHours style={style} data={dataHoursNight} />
+                    )
+                    )}
+            </div>
+            {/*transition(
+                (style, visible) => (
+                    !visible&&
+                         //<TempByHours style={style} data={dataHoursDay} />
+                        <TempByHours  style={style} data={dataHoursNight} />
+                )
+                )*/}
+
         </div>
     )
 }
 
-const TempByHours = ({ data }) => {
+const TempByHours = ({ style, data }) => {
     return (
-        <div className='rows'>
+        <a.div className='rows' style={style}>
             {data.map((item, index) => (
                 <div className="row" key={index}>
-                    <span className="list--temp--text">{index}:00</span>
-                    <span className="list--temp--text">
+                    <span className=" hour list--temp--text">{index}:00</span>
+                    <span className=" temp list--temp--text">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="17.431"
@@ -96,6 +118,6 @@ const TempByHours = ({ data }) => {
                     <br />
                 </div>
             ))}
-        </div>
+        </a.div>
     );
 };
