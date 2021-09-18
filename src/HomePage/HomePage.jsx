@@ -9,18 +9,24 @@ import DayShiftWidget from "../components/DayShift";
 import WeatherSlider from "../components/WeatherSlider";
 import MapContainer from "./Sections/MapContainer";
 import { Hours } from "./Sections/Hours";
+import useGeoLocation from "../hooks/useGeoLocation";
 
-const {REACT_APP_GOOGLE_MAPS_API_KEY} = process.env;
+const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${REACT_APP_GOOGLE_MAPS_API_KEY}`;
-
-const initialPlace= { loc:'Arequipa', lng:0, lat:0}
+const initialPlace = {
+  coordinates: { lat: '', lng: '' },
+  cityName: '****',
+}
 
 export default function HomePage() {
 
   const city = useState(initialPlace);
   const { pathname, hash } = useLocation();
+  const geoLocation = useGeoLocation()
+
 
   useEffect(() => {
+    city[1](geoLocation)
     if (hash === "") {
       window.scrollTo(0, 0);
     } else {
@@ -32,10 +38,11 @@ export default function HomePage() {
       }
       //}, 0);*/
     }
-  }, [hash, pathname]); // do this on route change
+  }, [hash, pathname, geoLocation]); // do this on route change
 
   return (
     <div className="home-page">
+
       <WeatherSlider />
       <TempWidget />
       <DateFilter />
@@ -46,7 +53,8 @@ export default function HomePage() {
       <RatioWidget2 />
 
       <section id="sectionhours">
-        <Hours/>
+        {geoLocation.loaded && JSON.stringify(geoLocation)}
+        <Hours />
       </section>
       <section id="sectioncities">
         {/*<MapContainer

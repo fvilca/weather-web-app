@@ -8,9 +8,15 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 
-const popularCities = "Iquique Guadalajara Cali Beni SaoPaulo Guayaquil".split(
-  " "
-);
+const popularCities = [
+  { cityName: 'Santiago', country: 'Chile', coordinates: { lat: -33.448891, lng: -70.669266 } },
+  { cityName: 'Guadalajara', country: 'Mexico', coordinates: { lat: 20.659698, lng: -103.349609 } },
+  { cityName: 'Cali', country: 'Colombia', coordinates: { lat: 3.451647, lng: -76.531982 } },
+  { cityName: 'Lima', country: 'Perú', coordinates: { lat: -12.0621, lng: -77.0365 } },
+  { cityName: 'Miami', country: 'USA', coordinates: { lat: 25.7742, lng: -80.1936 } },
+  { cityName: 'Sao Paulo', country: 'Brazil', coordinates: { lat: -23.5507, lng: -46.6334 } },
+  { cityName: 'Madrid', country: 'Spain', coordinates: { lat: 40.4167, lng: -3.7036 } },
+]
 
 export default function ModalCity({
   style,
@@ -20,12 +26,14 @@ export default function ModalCity({
 }) {
   const [inputValue, setInputValue] = useState("");
   const handleSelect = (params) => {
+    console.log('select:', params)
     setInputValue(params);
   };
   const handleClick = async () => {
     const geo = await geocodeByAddress(inputValue);
+    console.log('--geo:', geo)
     const latLng = await getLatLng(geo[0]);
-    const newCity = { ...latLng, loc: inputValue };
+    const newCity = { coordinates: { ...latLng }, cityName: inputValue };
     setCity(newCity);
   };
 
@@ -34,8 +42,8 @@ export default function ModalCity({
       <div className="modal--bg" onClick={handleModalVisible} />
       <form className="form">
         <div>
-          <Title /> 
-          <Tags />
+          <Title />
+          <Tags handleModalVisible={handleModalVisible} setCity={setCity} />
           <SearchCity
             inputValue={inputValue}
             setInputValue={setInputValue}
@@ -60,12 +68,20 @@ const Title = () => {
     </div>
   );
 };
-const Tags = ({ data }) => {
+const Tags = ({ handleModalVisible, setCity }) => {
+
+  const handleClick = ({cityName, country}) => {
+    setCity((state) => ({
+      ...state, cityName:cityName, country:country
+    }));
+    handleModalVisible();
+  }
+
   return (
     <div className="container--tags">
       {popularCities.map((city, index) => (
-        <div key={index} className="tag text--tag">
-          {city}
+        <div key={index} onClick={() => handleClick(city)} className="tag text--tag">
+          {city.cityName}
         </div>
       ))}
     </div>
@@ -97,24 +113,25 @@ const SearchCity = ({ inputValue, setInputValue, handleSelect }) => {
           <div className="search--detail">
             {loading && <div>Cargando...</div>}
             {suggestions.map((suggestion, index) => {
+              console.log('sugetion:', suggestion)
               const className = suggestion.active
                 ? "suggestion-item--active item--detail--active"
                 : "suggestion-item item--detail";
               const style = suggestion.active
                 ? {
-                    cursor: "pointer",
-                    color: "#3c423a",
-                    fontFamily: "Segoe WP bold",
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                  }
+                  cursor: "pointer",
+                  color: "#3c423a",
+                  fontFamily: "Segoe WP bold",
+                  fontWeight: "bold",
+                  fontSize: "24px",
+                }
                 : {
-                    cursor: "pointer",
-                    color: "#939482",
-                    fontFamily: "Segoe WP bold",
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                  };
+                  cursor: "pointer",
+                  color: "#939482",
+                  fontFamily: "Segoe WP bold",
+                  fontWeight: "bold",
+                  fontSize: "24px",
+                };
               return (
                 <div
                   key={suggestion.placeId}
