@@ -4,6 +4,7 @@ import { a, useTransition, config } from "react-spring";
 import ModalCity from "./ModalCity";
 
 const CityFilter = (props) => {
+  //console.log('cityFilter:', props)
   const [visibleModal, setVisibleModal] = useState(false);
   const transitionModal = useTransition(visibleModal, {
     from: {
