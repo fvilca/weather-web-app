@@ -22,7 +22,7 @@ export default function ModalCity({
   style,
   title,
   handleModalVisible,
-  setCity,
+  setCurrentWeather,
 }) {
   const [inputValue, setInputValue] = useState("");
   const handleSelect = (params) => {
@@ -33,8 +33,8 @@ export default function ModalCity({
     const geo = await geocodeByAddress(inputValue);
     console.log('--geo:', geo)
     const latLng = await getLatLng(geo[0]);
-    const newCity = { coordinates: { ...latLng }, cityName: inputValue };
-    setCity(newCity);
+    const newCity = { coordinates: { ...latLng }, name: inputValue };
+    //!setCurrentWeather(newCity);
   };
 
   return (
@@ -43,7 +43,7 @@ export default function ModalCity({
       <form className="form">
         <div>
           <Title />
-          <Tags handleModalVisible={handleModalVisible} setCity={setCity} />
+          <Tags handleModalVisible={handleModalVisible} setCurrentWeather={setCurrentWeather} />
           <SearchCity
             inputValue={inputValue}
             setInputValue={setInputValue}
@@ -68,12 +68,12 @@ const Title = () => {
     </div>
   );
 };
-const Tags = ({ handleModalVisible, setCity }) => {
+const Tags = ({ handleModalVisible, setCurrentWeather }) => {
 
   const handleClick = ({cityName, country}) => {
-    setCity((state) => ({
-      ...state, cityName:cityName, country:country
-    }));
+    /*setCurrentWeather((state) => ({
+      ...state, name:cityName, country:country
+    }));*/
     handleModalVisible();
   }
 

@@ -3,7 +3,7 @@ import "./filter.scss";
 import { a, useTransition, config } from "react-spring";
 import ModalCity from "./ModalCity";
 
-const CityFilter = (props) => {
+const CityFilter = ({city, country, setCurrentWeather}) => {
   //console.log('cityFilter:', props)
   const [visibleModal, setVisibleModal] = useState(false);
   const transitionModal = useTransition(visibleModal, {
@@ -33,6 +33,8 @@ const CityFilter = (props) => {
     [setVisibleModal, visibleModal]
   );
 
+  
+
   useEffect(() => {
     
     document.addEventListener("keydown", keyPress);
@@ -54,7 +56,7 @@ const CityFilter = (props) => {
             fill="#939482"
           />
         </svg>
-        <div className="filter--text">{props.city[0].cityName}, {props.city[0].country}</div>
+        <div className="filter--text">{city}, {country}</div>
         <svg
           className="filter--arrow"
           width="21.685"
@@ -80,7 +82,7 @@ const CityFilter = (props) => {
               style={style}
               title="Por Ciudad"
               handleModalVisible={handleModalVisible}
-              setCity={props.city[1]}
+              setCurrentWeather={setCurrentWeather}
             />
           )
       )}

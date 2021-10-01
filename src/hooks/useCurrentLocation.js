@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 
 const useCurrentLocation = (options = {}) => {
-  // store location in state
   const [location, setLocation] = useState();
-  // store error message in state
   const [error, setError] = useState();
 
-  // Success handler for geolocation's `getCurrentPosition` method
   const handleSuccess = (pos) => {
+    console.log('useLoc:', pos)
     const { latitude, longitude } = pos.coords;
 
     setLocation({
