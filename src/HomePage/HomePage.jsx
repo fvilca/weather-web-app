@@ -1,7 +1,6 @@
-import React from 'react'
 import TempWidget from "../components/WidgetTemp";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import CityFilter from "./../components/CityFilter";
 import DateFilter from "../components/DateFilter";
 import { RatioWidget1, RatioWidget2 } from "../components/RatioWidget";
@@ -20,14 +19,15 @@ const initialCity = {
   loaded: false,
 }
 export default function HomePage() {
-// ! HOOKS
-  const city = useState(initialCity);
+  // ! HOOKS
+  //const selectLocation = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null)
   const { pathname, hash } = useLocation();
-  const { location: currentLocation, error: currentError } = useCurrentLocation(geolocationOptions);
+  const { location: currentLocation, setLocation: setLocation, error: currentError } = useCurrentLocation(geolocationOptions);
+  const mapRef = useRef();
   // ! GETS
   const getWeatherByCoords = async (currentLocation) => {
-    
+    console.log('0:')
     const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
     const params = `?lat=${currentLocation.latitude}&lon=${currentLocation.longitude}&units=metric`;
     const appid = "&appid=5b05fc33f8dcfdc54fbc7f8a22733bfe";
@@ -35,9 +35,9 @@ export default function HomePage() {
       const response = await fetch(baseUrl + params + appid);
       if (response.status === 200) {
         const data = await response.json();
-        const weather = { ...data.main, wind: data.wind.speed, clouds: data.clouds.all, name:data.name,  country:data.sys.country};
+        const weather = { ...data.main, wind: data.wind.speed, clouds: data.clouds.all, name: data.name, country: data.sys.country };
         setCurrentWeather(weather);
-        console.log('weather::', weather);
+        console.log(' HomePage:weather::', weather);
       } else {
         setCurrentWeather(null);
       }
@@ -73,15 +73,16 @@ export default function HomePage() {
     }
   }, [hash, pathname, currentLocation]); // do this on route change
 
-  const lat = Math.round(city[0].lat)
-  const lng = Math.round(city[0].lng)
-  const cityName = city[0].cityName
   return (
     <div className="home-page">
       <WeatherSlider />
       {currentWeather && <TempWidget temp={Math.round(currentWeather.temp)} />}
       <DateFilter />
-      <CityFilter city={currentWeather.name} country={currentWeather.country} setCurrentWeather={setCurrentWeather} />
+      {currentWeather && <CityFilter
+        city={currentWeather.name}
+        country={currentWeather.country}
+        setLocation={setLocation} 
+        mapRef={mapRef}/>}
       <DayShiftWidget />
       <RatioWidget1 {...currentWeather} />
       <RatioWidget2 {...currentWeather} />
@@ -91,7 +92,7 @@ export default function HomePage() {
       </section>
 
       <section id="sectioncities">
-        <Cities location={currentLocation} />
+        {currentLocation && <Cities location={currentLocation} mapRef={mapRef} />}
       </section>
     </div>
   );

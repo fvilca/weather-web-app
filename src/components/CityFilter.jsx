@@ -3,8 +3,8 @@ import "./filter.scss";
 import { a, useTransition, config } from "react-spring";
 import ModalCity from "./ModalCity";
 
-const CityFilter = ({city, country, setCurrentWeather}) => {
-  //console.log('cityFilter:', props)
+const CityFilter = ({city, country, setLocation, mapRef}) => {
+
   const [visibleModal, setVisibleModal] = useState(false);
   const transitionModal = useTransition(visibleModal, {
     from: {
@@ -82,7 +82,8 @@ const CityFilter = ({city, country, setCurrentWeather}) => {
               style={style}
               title="Por Ciudad"
               handleModalVisible={handleModalVisible}
-              setCurrentWeather={setCurrentWeather}
+              setLocation = {setLocation}
+              mapRef={mapRef}
             />
           )
       )}

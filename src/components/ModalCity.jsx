@@ -9,22 +9,25 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 const popularCities = [
-  { cityName: 'Santiago', country: 'Chile', coordinates: { lat: -33.448891, lng: -70.669266 } },
-  { cityName: 'Guadalajara', country: 'Mexico', coordinates: { lat: 20.659698, lng: -103.349609 } },
-  { cityName: 'Cali', country: 'Colombia', coordinates: { lat: 3.451647, lng: -76.531982 } },
-  { cityName: 'Lima', country: 'Perú', coordinates: { lat: -12.0621, lng: -77.0365 } },
-  { cityName: 'Miami', country: 'USA', coordinates: { lat: 25.7742, lng: -80.1936 } },
-  { cityName: 'Sao Paulo', country: 'Brazil', coordinates: { lat: -23.5507, lng: -46.6334 } },
-  { cityName: 'Madrid', country: 'Spain', coordinates: { lat: 40.4167, lng: -3.7036 } },
+  { cityName: 'Santiago', country: 'Chile', coordinates: { latitude: -33.45805984824835, longitude: -70.6703993500645 } },
+  { cityName: 'Guadalajara', country: 'Mexico', coordinates: { latitude: 20.659698, longitude: -103.349609 } },
+  { cityName: 'Cali', country: 'Colombia', coordinates: { latitude: 3.451647, longitude: -76.531982 } },
+  { cityName: 'Lima', country: 'Perú', coordinates: { latitude: -12.0432, longitude: -77.0282 } },
+  { cityName: 'Miami', country: 'USA', coordinates: { latitude: 25.7742, longitude: -80.1936 } },
+  { cityName: 'Sao Paulo', country: 'Brazil', coordinates: { latitude: -23.5475, longitude: -46.6361 } },
+  { cityName: 'Madrid', country: 'Spain', coordinates: { latitude: 40.4165, longitude: -3.7026 } }, 
 ]
 
 export default function ModalCity({
   style,
   title,
   handleModalVisible,
-  setCurrentWeather,
+  setLocation,
+  mapRef
 }) {
   const [inputValue, setInputValue] = useState("");
+  console.log('modal: ref', mapRef);
+
   const handleSelect = (params) => {
     console.log('select:', params)
     setInputValue(params);
@@ -34,7 +37,7 @@ export default function ModalCity({
     console.log('--geo:', geo)
     const latLng = await getLatLng(geo[0]);
     const newCity = { coordinates: { ...latLng }, name: inputValue };
-    //!setCurrentWeather(newCity);
+    //setLocation({latitude:})
   };
 
   return (
@@ -43,7 +46,9 @@ export default function ModalCity({
       <form className="form">
         <div>
           <Title />
-          <Tags handleModalVisible={handleModalVisible} setCurrentWeather={setCurrentWeather} />
+          <Tags handleModalVisible={handleModalVisible} 
+          setLocation={setLocation}
+          mapRef={mapRef}/>
           <SearchCity
             inputValue={inputValue}
             setInputValue={setInputValue}
@@ -68,19 +73,21 @@ const Title = () => {
     </div>
   );
 };
-const Tags = ({ handleModalVisible, setCurrentWeather }) => {
+const Tags = ({ handleModalVisible, setLocation, mapRef }) => {
 
-  const handleClick = ({cityName, country}) => {
-    /*setCurrentWeather((state) => ({
-      ...state, name:cityName, country:country
-    }));*/
+  const handleClick = ({ latitude, longitude }) => {
+    setLocation({ latitude: latitude, longitude: longitude });
     handleModalVisible();
+    /*const { current = {} } = mapRef;
+    const { leafletElement: map } = current;
+
+    map.setView(disneyWorldLatLng, 14);*/
   }
 
   return (
     <div className="container--tags">
       {popularCities.map((city, index) => (
-        <div key={index} onClick={() => handleClick(city)} className="tag text--tag">
+        <div key={index} onClick={() => handleClick(city.coordinates)} className="tag text--tag">
           {city.cityName}
         </div>
       ))}
