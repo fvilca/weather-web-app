@@ -34,7 +34,7 @@ export default function ModalCity({
   };
   const handleClick = async () => {
     const geo = await geocodeByAddress(inputValue);
-    console.log('--geo:', geo)
+    //console.log('--geo:', geo)
     const latLng = await getLatLng(geo[0]);
     const newCity = { coordinates: { ...latLng }, name: inputValue };
     //setLocation({latitude:})
@@ -77,11 +77,12 @@ const Tags = ({ handleModalVisible, setLocation, mapRef }) => {
 
   const handleClick = ({ latitude, longitude }) => {
     setLocation({ latitude: latitude, longitude: longitude });
-    handleModalVisible();
-    /*const { current = {} } = mapRef;
-    const { leafletElement: map } = current;
+    window.localStorage.setItem('location', JSON.stringify({
+      latitude: latitude,
+      longitude: longitude
+    }))
 
-    map.setView(disneyWorldLatLng, 14);*/
+    handleModalVisible();
   }
 
   return (

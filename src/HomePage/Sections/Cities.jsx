@@ -33,7 +33,7 @@ export default function Cities({ location, mapRef }) {
 
 
     useEffect(() => {
-        console.log('Cities:location:', location)
+        console.log('\t Cities:location:', location)
         const getNearestCities = async () => {
             const baseUrl = "http://api.openweathermap.org/data/2.5/box/city?bbox="
             const bbox = "-75.62,-18.43,-69.84,-14.21"
@@ -44,7 +44,7 @@ export default function Cities({ location, mapRef }) {
                 const data = await response.json()
                 let temp = [];
                 setNearestCities(data.list);
-                console.log('nearest:', nearestCities);
+                //console.log('nearest:', nearestCities);
             }
         }
         getNearestCities();

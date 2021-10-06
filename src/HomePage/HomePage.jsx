@@ -12,19 +12,32 @@ import Cities from './Sections/Cities';
 import useFetch from '../hooks/useFetch'
 import useCurrentLocation from '../hooks/useCurrentLocation'
 import { geolocationOptions } from '../constants/geolocationOptions'
+
+const scrollTo_ = (hash) => {
+  if (hash === "") {
+    window.scrollTo(0, 0);
+  } else {
+    const id = hash.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView();
+    }
+  }
+}
+
 const initialCity = {
   lat: '',
   lng: '',
   cityName: '',
   loaded: false,
 }
-export default function HomePage() {
+function HomePage() {
   // ! HOOKS
   //const selectLocation = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null)
   const { pathname, hash } = useLocation();
   const { location: currentLocation, setLocation: setLocation, error: currentError } = useCurrentLocation(geolocationOptions);
-  const mapRef = useRef();
+  const isMounted = useRef(false);
   // ! GETS
   const getWeatherByCoords = async (currentLocation) => {
     console.log('0:')
@@ -37,7 +50,7 @@ export default function HomePage() {
         const data = await response.json();
         const weather = { ...data.main, wind: data.wind.speed, clouds: data.clouds.all, name: data.name, country: data.sys.country };
         setCurrentWeather(weather);
-        console.log(' HomePage:weather::', weather);
+        console.log(' HomePage:weather:', weather);
       } else {
         setCurrentWeather(null);
       }
@@ -58,20 +71,25 @@ export default function HomePage() {
   }
 
   useEffect(() => {
+    //currentLocation && getWeatherByCoords(currentLocation)
+    console.log('HomePage: 1');
+  }, [])
+
+  useEffect(() => {
+    scrollTo_(hash);
+    console.log('HomePage: 2');
+  }, [hash, pathname]); // do this on route change
+  useEffect(() => {
     currentLocation && getWeatherByCoords(currentLocation)
-    //getStates('PE')
-    if (hash === "") {
-      window.scrollTo(0, 0);
-    } else {
-      //setTimeout(() => {
-      const id = hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView();
-      }
-      //}, 0);*/
-    }
-  }, [hash, pathname, currentLocation]); // do this on route change
+    console.log('HomePage: 3');
+  }, [currentLocation]);
+
+  /*
+  useEffect(() => {
+    
+    currentLocation && getWeatherByCoords(currentLocation)
+    console.log('HomePage2: path:', pathname);
+  }, [currentLocation])*/
 
   return (
     <div className="home-page">
@@ -81,8 +99,8 @@ export default function HomePage() {
       {currentWeather && <CityFilter
         city={currentWeather.name}
         country={currentWeather.country}
-        setLocation={setLocation} 
-        mapRef={mapRef}/>}
+        setLocation={setLocation}
+      />}
       <DayShiftWidget />
       <RatioWidget1 {...currentWeather} />
       <RatioWidget2 {...currentWeather} />
@@ -92,9 +110,10 @@ export default function HomePage() {
       </section>
 
       <section id="sectioncities">
-        {currentLocation && <Cities location={currentLocation} mapRef={mapRef} />}
+        {currentLocation && <Cities location={currentLocation} />}
       </section>
     </div>
   );
 }
 
+export default HomePage
