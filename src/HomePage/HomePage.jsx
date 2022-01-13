@@ -25,22 +25,15 @@ const scrollTo_ = (hash) => {
   }
 }
 
-const initialCity = {
-  lat: '',
-  lng: '',
-  cityName: '',
-  loaded: false,
-}
 function HomePage() {
   // ! HOOKS
-  //const selectLocation = useState(null);
   const [currentWeather, setCurrentWeather] = useState(null)
   const { pathname, hash } = useLocation();
   const { location: currentLocation, setLocation: setLocation, error: currentError } = useCurrentLocation(geolocationOptions);
   const isMounted = useRef(false);
   // ! GETS
   const getWeatherByCoords = async (currentLocation) => {
-    console.log('0:')
+    //console.log('0:')
     const baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
     const params = `?lat=${currentLocation.latitude}&lon=${currentLocation.longitude}&units=metric`;
     const appid = "&appid=5b05fc33f8dcfdc54fbc7f8a22733bfe";
@@ -50,7 +43,7 @@ function HomePage() {
         const data = await response.json();
         const weather = { ...data.main, wind: data.wind.speed, clouds: data.clouds.all, name: data.name, country: data.sys.country };
         setCurrentWeather(weather);
-        console.log(' HomePage:weather:', weather);
+        //console.log(' HomePage:weather:', weather);
       } else {
         setCurrentWeather(null);
       }
@@ -67,40 +60,28 @@ function HomePage() {
     const apiUrl = "https://api.countrystatecity.in/v1/countries/";
     let respState = await fetch(apiUrl + country + "/states", requestStateOptions);
     let statesdata = await respState.json();
-    console.log('states:', statesdata);
+    //console.log('states:', statesdata);
   }
 
   useEffect(() => {
-    //currentLocation && getWeatherByCoords(currentLocation)
-    console.log('HomePage: 1');
-  }, [])
-
-  useEffect(() => {
     scrollTo_(hash);
-    console.log('HomePage: 2');
-  }, [hash, pathname]); // do this on route change
+  }, [hash, pathname]); 
+  
   useEffect(() => {
+    //console.log('***',currentLocation)
     currentLocation && getWeatherByCoords(currentLocation)
-    console.log('HomePage: 3');
   }, [currentLocation]);
-
-  /*
-  useEffect(() => {
-    
-    currentLocation && getWeatherByCoords(currentLocation)
-    console.log('HomePage2: path:', pathname);
-  }, [currentLocation])*/
 
   return (
     <div className="home-page">
-      <WeatherSlider />
-      {currentWeather && <TempWidget temp={Math.round(currentWeather.temp)} />}
+      <WeatherSlider loc={currentLocation}/>
+      <TempWidget temp={currentWeather ? Math.round(currentWeather.temp):0} />
       <DateFilter />
-      {currentWeather && <CityFilter
-        city={currentWeather.name}
-        country={currentWeather.country}
+      <CityFilter
+        city={currentWeather?currentWeather.name:'Loading...'}
+        country={currentWeather?currentWeather.country:'*'}
         setLocation={setLocation}
-      />}
+      />
       <DayShiftWidget />
       <RatioWidget1 {...currentWeather} />
       <RatioWidget2 {...currentWeather} />

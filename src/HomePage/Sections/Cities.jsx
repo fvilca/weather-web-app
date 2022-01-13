@@ -33,7 +33,7 @@ export default function Cities({ location, mapRef }) {
 
 
     useEffect(() => {
-        console.log('\t Cities:location:', location)
+        //console.log('\t Cities:location:', location)
         const getNearestCities = async () => {
             const baseUrl = "http://api.openweathermap.org/data/2.5/box/city?bbox="
             const bbox = "-75.62,-18.43,-69.84,-14.21"
@@ -52,15 +52,13 @@ export default function Cities({ location, mapRef }) {
     }, [location])
 
     return (
-        <div id="mapid">
+        <div id="map">
             {location
                 ? <MapContainer center={[location.latitude, location.longitude]} zoom={6} scrollWheelZoom={false} id="map">
                     <div>Div</div>
                     <TileLayer
                         attribution="<a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OSM</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'></a></strong>"
                         url="https://api.mapbox.com/styles/v1/fvilca/cktrkqqvv0rzz19pbj1zy2qyh/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiZnZpbGNhIiwiYSI6ImNrdHJrbXVmbjE3OHoyb3E1b3BxcjJmanIifQ.68tQjoLnCXwgeBsGbKWt7A"
-                    //attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     <Marker position={[location.latitude, location.longitude]} icon={icon}>
                         <Popup>popup</Popup>
@@ -73,7 +71,7 @@ export default function Cities({ location, mapRef }) {
                             <span className='leaflet-tooltip-own'>cityName</span>
                         </Tooltip>
                     </Marker>
-                    {/*<NearestCities nearestCities={nearestCities} />*/}
+                    <NearestCities nearestCities={nearestCities} />
                     <ChangeView center={[location.latitude, location.longitude]}/>
                 </MapContainer>
                 : <div id="map">'cargando location'</div>

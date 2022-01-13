@@ -14,10 +14,6 @@ const useCurrentLocation = (options = {}) => {
       latitude,
       longitude
     } = pos.coords;
-    /*window.localStorage.setItem('location', {
-      latitude,
-      longitude
-    })*/
     setLocation({
       latitude,
       longitude
@@ -37,7 +33,8 @@ const useCurrentLocation = (options = {}) => {
       return;
     }
     !location&&geolocation.getCurrentPosition(handleSuccess, handleError, options);
-  }, [options]);
+  //}, [options]);
+  }, [ options, location]);
 
   return {
     location,

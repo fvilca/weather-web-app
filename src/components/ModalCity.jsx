@@ -81,7 +81,7 @@ const Tags = ({ handleModalVisible, setLocation, mapRef }) => {
       latitude: latitude,
       longitude: longitude
     }))
-
+    
     handleModalVisible();
   }
 

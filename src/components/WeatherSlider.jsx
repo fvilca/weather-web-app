@@ -1,23 +1,28 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./weather-slider.scss";
 import { a, useTransition, config } from "react-spring";
+import { DateTime } from "luxon";
+import axios from 'axios'
 
 const data = [
-  { icon: "cloudy_d", label: "Nublado parcialmente" },
-  { icon: "sunny", label: "Soleado" },
-  { icon: "cloudy_n", label: "Nublado parcialmente" },
-  { icon: "cloudy_d", label: "Nublado parcialmente" },
-  { icon: "sunny", label: "Soleado" },
-  { icon: "cloudy_n", label: "Nublado parcialmente" },
-  { icon: "cloudy_d", label: "Nublado parcialmente" },
-  { icon: "sunny", label: "Soleado" },
-  { icon: "cloudy_n", label: "Nublado parcialmente" },
-  { icon: "cloudy_d", label: "Nublado parcialmente" },
-  { icon: "sunny", label: "Soleado" },
-  { icon: "cloudy_n", label: "Nublado parcialmente" },
+  { icon: "cloudy_d", description: "Nublado parcialmente" },
+  { icon: "sunny", description: "Soleado" },
+  { icon: "cloudy_n", description: "Nublado parcialmente" },
+  { icon: "cloudy_d", description: "Nublado parcialmente" },
+  { icon: "sunny", description: "Soleado" },
+  { icon: "cloudy_n", description: "Nublado parcialmente" },
+  { icon: "cloudy_d", description: "Nublado parcialmente" },
+  { icon: "sunny", description: "Soleado" },
+  { icon: "cloudy_n", description: "Nublado parcialmente" },
+  { icon: "cloudy_d", description: "Nublado parcialmente" },
+  { icon: "sunny", description: "Soleado" },
+  { icon: "cloudy_n", description: "Nublado parcialmente" },
 ];
 
-const WeatherSlider = () => {
+function WeatherSlider ({ loc }){
+
+  const [dates, setDates] = useState([]);
+  //console.log('loc: ', loc.latitude, loc.longitude);
   const [bd, setBd] = useState(data);
   const [direction, setDirection] = useState(1);
   const [currentIndex, setcurrentIndex] = useState(1);
@@ -55,16 +60,114 @@ const WeatherSlider = () => {
     });
     setDirection(-1);
   };
+  const buildingListofDates = async (today) => {
+
+    const numDates = 7;
+    let arrayDatesUTC = []
+    let arrayDatesISO = []
+    const initDate = today.minus({ days: 3 })
+    for (let index = 0; index < numDates; index++) {
+      arrayDatesUTC[index] = parseInt(initDate.plus({ days: index }).toMillis() / 1000).toFixed(0);
+      arrayDatesISO[index] = initDate.plus({ days: index }).toISODate()
+    }
+    console.log(arrayDatesISO)
+    console.log(arrayDatesUTC);
+    console.log('________________')
+    const baseUrl = 'http://api.openweathermap.org/data/2.5/onecall/timemachine?units=metric&'
+    const baseUrl2 = 'https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&units=metric&'
+
+    const params = `lat=${loc.latitude}&lon=${loc.longitude}`
+    const appid = 'appid=5b05fc33f8dcfdc54fbc7f8a22733bfe'
+
+    const request1 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[0]}` + '&' + appid)
+    const request2 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[1]}` + '&' + appid)
+    const request3 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[2]}` + '&' + appid)
+    const request4 = await axios.get(baseUrl2 + params + '&' + appid)
+
+    await axios
+      .all([request1, request2, request3, request4])
+      .then(axios.spread((...responses) => {
+        const response1 = responses[0]
+        const response2 = responses[1]
+        const response3 = responses[2]
+        const response4 = responses[3]
+
+        const temp1 = {
+          dt: response1.data.current.dt,
+          temp: response1.data.current.temp,
+          desc: response1.data.current.weather[0].description,
+          main: response1.data.current.weather[0].main,
+          icon: response1.data.current.weather[0].icon
+        }
+        const temp2 = {
+          dt: response2.data.current.dt,
+          temp: response2.data.current.temp,
+          desc: response2.data.current.weather[0].description,
+          main: response2.data.current.weather[0].main,
+          icon: response2.data.current.weather[0].icon
+        }
+        const temp3 = {
+          dt: response3.data.current.dt,
+          temp: response3.data.current.temp,
+          desc: response3.data.current.weather[0].description,
+          main: response3.data.current.weather[0].main,
+          icon: response3.data.current.weather[0].icon
+        }
+        const temp4 = {
+          dt: response4.data.current.dt,
+          temp: response4.data.current.temp,
+          desc: response4.data.current.weather[0].description,
+          main: response4.data.current.weather[0].main,
+          icon: response4.data.current.weather[0].icon
+        }
+        const temp5 = {
+          temp: response4.data.daily[0].temp.day,
+          dt: response4.data.daily[0].dt,
+          desc: response4.data.daily[0].weather[0].description,
+          main: response4.data.daily[0].weather[0].main,
+          icon: response4.data.daily[0].weather[0].icon
+        }
+        const temp6 = {
+          temp: response4.data.daily[1].temp.day,
+          dt: response4.data.daily[1].dt,
+          desc: response4.data.daily[1].weather[0].description,
+          main: response4.data.daily[1].weather[0].main,
+          icon: response4.data.daily[1].weather[0].icon
+        }
+        const temp7 = {
+          temp: response4.data.daily[2].temp.day,
+          dt: response4.data.daily[2].dt,
+          desc: response4.data.daily[2].weather[0].description,
+          main: response4.data.daily[2].weather[0].main,
+          icon: response4.data.daily[2].weather[0].icon
+        }
+        console.log('temp7:', temp7)
+        //setDates([...dates, temp1, temp2, temp3, temp4, temp5, temp6, temp7 ])
+        setTimeout(() => {
+          //setDates([...dates, temp1, temp2, temp3, temp4, temp5, temp6, temp7 ])
+          console.log('dates:', dates)
+        }, 1000);
+
+      }))
+      .catch(errors => console.log('errors:', errors))
+  }
+
+  useEffect(() => {
+    console.log('----> Slider')
+    buildingListofDates(DateTime.now());
+    console.log('----> Slider end')
+  }, [])
 
   return (
     <div className="slider">
+
       <div className="container-spring container-left">
         {tSpring((style, i, j) => {
           return (
             <a.div className="spring--left" style={style}>
               <img
                 src={
-                  require("../images/" + bd[i -1].icon + "_outline.svg")
+                  require("../images/" + bd[i - 1].icon + "_outline.svg")
                     .default
                 }
                 alt=""
