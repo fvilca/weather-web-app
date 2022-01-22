@@ -9,7 +9,6 @@ import WeatherSlider from "../components/WeatherSlider";
 import { Hours } from "./Sections/Hours";
 import "./home_page.scss";
 import Cities from './Sections/Cities';
-import useFetch from '../hooks/useFetch'
 import useCurrentLocation from '../hooks/useCurrentLocation'
 import { geolocationOptions } from '../constants/geolocationOptions'
 
@@ -65,8 +64,8 @@ function HomePage() {
 
   useEffect(() => {
     scrollTo_(hash);
-  }, [hash, pathname]); 
-  
+  }, [hash, pathname]);
+
   useEffect(() => {
     //console.log('***',currentLocation)
     currentLocation && getWeatherByCoords(currentLocation)
@@ -74,18 +73,20 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <WeatherSlider loc={currentLocation}/>
-      <TempWidget temp={currentWeather ? Math.round(currentWeather.temp):0} />
+      <WeatherSlider loc={currentLocation} />
+      <TempWidget temp={currentWeather ? Math.round(currentWeather.temp) : 0} />
       <DateFilter />
       <CityFilter
-        city={currentWeather?currentWeather.name:'Loading...'}
-        country={currentWeather?currentWeather.country:'*'}
+        city={currentWeather ? currentWeather.name : 'Loading...'}
+        country={currentWeather ? currentWeather.country : '*'}
         setLocation={setLocation}
       />
+
       <DayShiftWidget />
       <RatioWidget1 {...currentWeather} />
       <RatioWidget2 {...currentWeather} />
 
+      {/*
       <section id="sectionhours">
         <Hours />
       </section>
@@ -93,6 +94,7 @@ function HomePage() {
       <section id="sectioncities">
         {currentLocation && <Cities location={currentLocation} />}
       </section>
+      */}
     </div>
   );
 }

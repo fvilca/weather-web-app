@@ -1,4 +1,6 @@
 @import "variables";
+@import "HomePage/home_page.scss";
+@import "SettingPage/setting.scss";
 
 
 #main {
@@ -6,12 +8,64 @@
   width: 100%;
 }
 
-/*
-@media (min-width: 640px) {
 
+.home-page {
+  padding: calc(.1rem + .5vw);
+  width: 100vw; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "slider  slider"
+    "temp-widget      temp-widget"
+    "filter--city      filter--city"
+    "filter--date      filter--date"
+    "day-shift-widget day-shift-widget"
+    "ratio-widget1    ratio-widget1"
+    "ratio-widget2    ratio-widget2"
+    ;/*"temp temp"
+    "hours            hours"
+    "cities           cities";*/
+
+    //gap: 1rem;
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 640px) { //tablet
+  body {
+    //background-color: salmon;
+    font-size: 18px;
+  }
+  .home-page {
+    width: 100vw; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+      "slider  slider slider"
+      "filter--city      temp-widget filter--date "
+      "ratio-widget1 day-shift-widget ratio-widget2"
+      ;/*"temp temp temp"
+      "hours            hours hours"
+      "cities           cities cities";*/
 
+      //gap: 1rem;
+  }
+  
 }
-*/
+
+@media (min-width: 1060px) { //desktop
+  body {
+    //background-color: lightgreen;
+    font-size: 18px;
+  }
+  .home-page {
+    width: 100vw; 
+    grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+    grid-template-areas:
+    " . slider  slider   slider . "
+    " . filter--city   temp-widget  filter--date ."
+    " . ratio-widget1    day-shift-widget    ratio-widget2 ."
+    ;/*" . hours            hours hours ."
+    " . cities           cities cities .";*/
+
+  }
+}
+

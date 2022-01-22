@@ -27,7 +27,7 @@ $label_menu_icon: 'Segoe WP bold';
 /** TEXT ****/
 
 .label-card, .mini-icon--label {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: bold;
   font-family: $label_card;
   color: $color2;
@@ -35,6 +35,7 @@ $label_menu_icon: 'Segoe WP bold';
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0 0.4rem 10px 10px;
+  
 }
 
 $txt-filter:1.111rem;
@@ -54,7 +55,7 @@ $txt-filter:1.111rem;
 .filter--title--dark, .slider-icon-label{
   font-family: $label_card;
   font-weight: bold;
-  font-size: 21px;
+  font-size: 18px;
   color: $color1;
 }
 

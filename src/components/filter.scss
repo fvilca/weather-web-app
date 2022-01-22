@@ -5,9 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  
-  .filter--container{
+  //overflow: hidden;
+
+  .filter--container {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -18,11 +18,13 @@
     overflow: hidden;
     //border: 2px solid red;
   }
-  .filter--icon{
-    width: 20px;
-    margin:  10px;
+
+  .filter--icon {
+    width: 28px;
+    margin: 10px;
   }
-  .filter--text{
+
+  .filter--text {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -32,12 +34,35 @@
     font-family: $label_card;
     font-weight: bold;
     color: $color1;
-    margin:  .5rem 0 ;
-    
+    margin: .5rem 0;
+
+  }
+
+  .filter--arrow {
+    width: calc(15px + 1vw);
+    height: auto;
+    margin: 0 10px;
+  }
 }
-.filter--arrow{
-  width: calc(15px + 1vw);
-  height: auto;
-  margin: 0 10px;
+
+@media (min-width: 640px) {
+
+  //tablet
+  .filter--icon {
+    //display: none;
+  }
+
+  .filter--text {}
 }
+
+@media (min-width: 1060) {
+
+  //desktop
+  .filter {
+    .filter--icon {
+      display: unset;
+    }
+
+    .filter--text {}
+  }
 }

@@ -5,67 +5,74 @@ import { DateTime } from "luxon";
 import axios from 'axios'
 
 const data = [
-  { icon: "cloudy_d", description: "Nublado parcialmente" },
-  { icon: "sunny", description: "Soleado" },
-  { icon: "cloudy_n", description: "Nublado parcialmente" },
-  { icon: "cloudy_d", description: "Nublado parcialmente" },
-  { icon: "sunny", description: "Soleado" },
-  { icon: "cloudy_n", description: "Nublado parcialmente" },
-  { icon: "cloudy_d", description: "Nublado parcialmente" },
-  { icon: "sunny", description: "Soleado" },
-  { icon: "cloudy_n", description: "Nublado parcialmente" },
-  { icon: "cloudy_d", description: "Nublado parcialmente" },
-  { icon: "sunny", description: "Soleado" },
-  { icon: "cloudy_n", description: "Nublado parcialmente" },
+  { icon: "cloudy_d", description: "Scattered clouds" },
+  { icon: "sunny", description: "Sunny" },
+  { icon: "cloudy_n", description: "Scattered clouds" },
+  { icon: "cloudy_d", description: "Few clouds" },
+  { icon: "sunny", description: "Sunny" },
+  { icon: "cloudy_d", description: "Scattered clouds" },
+  { icon: "cloudy_d", description: "Scattered clouds" },
+  { icon: "sunny", description: "Sunny" },
+  { icon: "cloudy_n", description: "Scattered clouds" },
+  { icon: "cloudy_d", description: "Few clouds" },
+  { icon: "sunny", description: "Sunny" },
+  { icon: "cloudy_d", description: "Few clouds" },
+  { icon: "sunny", description: "Sunny" },
 ];
 
-function WeatherSlider ({ loc }){
+function WeatherSlider({ loc }) {
 
-  const [dates, setDates] = useState([]);
+  //const [dates, setDates] = useState([]);
   //console.log('loc: ', loc.latitude, loc.longitude);
   const [bd, setBd] = useState(data);
   const [direction, setDirection] = useState(1);
-  const [currentIndex, setcurrentIndex] = useState(1);
+  const [currentIndex, setcurrentIndex] = useState(5);
 
   const tSpring = useTransition(currentIndex, {
     from: {
       opacity: 0,
-      transform: `translate3d(${direction * -80}%, 0, 0)`,
+      transform: `translate3d(${direction * -30}%, 0, 0)`,
       scale: 0.5,
     },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)", scale: 1 },
     leave: {
       opacity: 0,
-      transform: `translate3d(${direction * 80}%, 0, 0)`,
+      transform: `translate3d(${direction * 30}%, 0, 0)`,
       scale: 0.5,
     },
     config: config.gentle,
     //config: { duration: 1000 },
-    //trail: 150,
+    trail: 150,
   });
 
-  const nextHandle = useCallback(() => {
-    setcurrentIndex((state) => {
-      console.log("next:", state);
-      return (state + 1) % data.length;
-    });
-
-    setDirection(1);
-  }, []);
+  const nextHandle = () => {
+    console.log('currentIndex: ', currentIndex)
+    if (currentIndex < data.length - 4) {
+      setcurrentIndex((state) => {
+        console.log("next:", state);
+        return (state + 1) % data.length;
+      });
+      setDirection(-1);
+    }
+  };
 
   const prevHandle = () => {
-    setcurrentIndex((state) => {
-      console.log("prev:", state);
-      return (state - 1) % data.length;
-    });
-    setDirection(-1);
+    console.log('currentIndex: ', currentIndex)
+    if (currentIndex !== 3) {
+      setcurrentIndex((state) => {
+        console.log("prev:", state);
+        return (state - 1) % data.length;
+      });
+      setDirection(1);
+    }
   };
-  const buildingListofDates = async (today) => {
 
-    const numDates = 7;
+  const buildingListofDates = (today) => {
+
+    const numDates = data.length;
     let arrayDatesUTC = []
     let arrayDatesISO = []
-    const initDate = today.minus({ days: 3 })
+    const initDate = today.minus({ days:  6})
     for (let index = 0; index < numDates; index++) {
       arrayDatesUTC[index] = parseInt(initDate.plus({ days: index }).toMillis() / 1000).toFixed(0);
       arrayDatesISO[index] = initDate.plus({ days: index }).toISODate()
@@ -79,12 +86,12 @@ function WeatherSlider ({ loc }){
     const params = `lat=${loc.latitude}&lon=${loc.longitude}`
     const appid = 'appid=5b05fc33f8dcfdc54fbc7f8a22733bfe'
 
-    const request1 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[0]}` + '&' + appid)
-    const request2 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[1]}` + '&' + appid)
-    const request3 = await axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[2]}` + '&' + appid)
-    const request4 = await axios.get(baseUrl2 + params + '&' + appid)
+    const request1 = axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[0]}` + '&' + appid)
+    const request2 = axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[1]}` + '&' + appid)
+    const request3 = axios.get(baseUrl + params + '&' + `dt=${arrayDatesUTC[2]}` + '&' + appid)
+    const request4 = axios.get(baseUrl2 + params + '&' + appid)
 
-    await axios
+    axios
       .all([request1, request2, request3, request4])
       .then(axios.spread((...responses) => {
         const response1 = responses[0]
@@ -93,11 +100,11 @@ function WeatherSlider ({ loc }){
         const response4 = responses[3]
 
         const temp1 = {
-          dt: response1.data.current.dt,
-          temp: response1.data.current.temp,
-          desc: response1.data.current.weather[0].description,
-          main: response1.data.current.weather[0].main,
-          icon: response1.data.current.weather[0].icon
+          'dt': response1.data.current.dt,
+          'temp': response1.data.current.temp,
+          'desc': response1.data.current.weather[0].description,
+          'main': response1.data.current.weather[0].main,
+          'icon': response1.data.current.weather[0].icon
         }
         const temp2 = {
           dt: response2.data.current.dt,
@@ -141,11 +148,10 @@ function WeatherSlider ({ loc }){
           main: response4.data.daily[2].weather[0].main,
           icon: response4.data.daily[2].weather[0].icon
         }
-        console.log('temp7:', temp7)
-        //setDates([...dates, temp1, temp2, temp3, temp4, temp5, temp6, temp7 ])
+
         setTimeout(() => {
-          //setDates([...dates, temp1, temp2, temp3, temp4, temp5, temp6, temp7 ])
-          console.log('dates:', dates)
+          //setDates(oldArray => [...oldArray, temp1]) // temp2, temp3, temp4, temp5, temp6, temp7])
+          //console.log('dates:', dates)
         }, 1000);
 
       }))
@@ -154,30 +160,79 @@ function WeatherSlider ({ loc }){
 
   useEffect(() => {
     console.log('----> Slider')
-    buildingListofDates(DateTime.now());
+    ///buildingListofDates(DateTime.now());
+    const today = DateTime.now();
+    const numDates = data.length;
+    let arrayDatesUTC = []
+    let arrayDatesISO = []
+    const initDate = today.minus({ days: 6 })
+    for (let index = 0; index < numDates; index++) {
+      arrayDatesUTC[index] = parseInt(initDate.plus({ days: index }).toMillis() / 1000).toFixed(0);
+      arrayDatesISO[index] = initDate.plus({ days: index }).toFormat('ccc');
+    }
+    arrayDatesISO[4] = 'Yesterday'
+    arrayDatesISO[5] = 'Today'
+    arrayDatesISO[6] = 'Tomorrow'
+
+
+    setBd(bd.map((item, index) => {
+      const temp = { ...item, date: arrayDatesISO[index] }
+      return temp
+    }))
     console.log('----> Slider end')
   }, [])
 
   return (
     <div className="slider">
-
       <div className="container-spring container-left">
         {tSpring((style, i, j) => {
           return (
             <a.div className="spring--left" style={style}>
-              <img
-                src={
-                  require("../images/" + bd[i - 1].icon + "_outline.svg")
-                    .default
-                }
-                alt=""
-              />
-              <span
-                className="mini-icon--label"
-                style={{ textAlign: "center" }}
-              >
-                Ayer
-              </span>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i - 3].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i - 3].date}
+                </span>
+              </div>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i - 2].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i - 2].date}
+                </span>
+              </div>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i - 1].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i - 1].date}
+                </span>
+              </div>
             </a.div>
           );
         })}
@@ -194,7 +249,7 @@ function WeatherSlider ({ loc }){
           d="M24.192,30.384,13.5,19.692,24.192,9"
           transform="translate(-11 -5.464)"
           fill="none"
-          stroke="#939482"
+          stroke={currentIndex === 3 ? '#939482' : "#3c423a"}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="5"
@@ -212,7 +267,7 @@ function WeatherSlider ({ loc }){
                 className="slider-icon-label"
                 style={{ textAlign: "center" }}
               >
-                Hoy: Soleado
+                {bd[i].date}
               </span>
             </a.div>
           );
@@ -230,7 +285,7 @@ function WeatherSlider ({ loc }){
           d="M10.692,21.384,0,10.692,10.692,0"
           transform="translate(14.228 24.92) rotate(180)"
           fill="none"
-          stroke="#939482"
+          stroke={currentIndex === 9 ? '#939482' : "#3c423a"}
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="5"
@@ -240,19 +295,51 @@ function WeatherSlider ({ loc }){
         {tSpring((style, i, j) => {
           return (
             <a.div className="spring--right" style={style}>
-              <img
-                src={
-                  require("../images/" + bd[i + 1].icon + "_outline.svg")
-                    .default
-                }
-                alt=""
-              />
-              <span
-                className="mini-icon--label"
-                style={{ textAlign: "center" }}
-              >
-                Mañana
-              </span>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i + 1].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i + 1].date}
+                </span>
+              </div>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i + 2].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i + 2].date}
+                </span>
+              </div>
+              <div>
+                <img
+                  src={
+                    require("../images/" + bd[i + 3].icon + "_outline.svg")
+                      .default
+                  }
+                  alt=""
+                />
+                <span
+                  className="mini-icon--label"
+                  style={{ textAlign: "center" }}
+                >
+                  {bd[i + 3].date}
+                </span>
+              </div>
             </a.div>
           );
         })}

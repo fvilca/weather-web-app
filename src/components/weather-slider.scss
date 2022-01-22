@@ -4,53 +4,79 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(200px + 5vw); //cambiar esto en IPAD y DESKTOP
+  height: calc(200px + 1vw);
   .button--svg {
-    width: calc(15px + 1vw);
     cursor: pointer;
-    margin: 10px;
+    z-index: 1004;
   }
+
   .container-spring {
     position: relative;
-    overflow: hidden;
+    //overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    //margin: 10px;
     .spring--left {
+      gap: 1rem calc(1rem + .3vw);
       position: absolute;
-      width: calc(50px + 2.5vw);
-      height: calc(50px + 2.5vh);
       opacity: 0.9;
-      left: -10%;
-      img {
-        width: calc(40px + 2.5vw);
-        height: calc(40px + 2.5vw);
+      //left: -10%;
+      display: flex;
+      * {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: calc(40px + 2.5vw);
+          height: calc(40px + 2.5vw);
+        }
+      }
+      div:nth-child(-n+2) {
+        display: none;
       }
     }
+
     .spring--middle {
       position: absolute;
       width: 100%;
-      //width: calc(150px + 5.5vw);
       height: 100%;
-      //border: 1px solid blue;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      //align-items: center;
-    }
-    .spring--right {
-      position: absolute;
-      width: calc(50px + 2.5vw);
-      height: calc(50px + 2.5vh);
-      //width: 70%;
-      //height: 70%;
-      opacity: 0.9;
-      right: -10%;
+      //gap: 1rem;
       img {
-        width: calc(40px + 2.5vw);
-        height: calc(40px + 2.5vw);
+        height: 90%;
       }
+      span{
+        margin-top: 1rem;
+      }
+
+    }
+
+    .spring--right {
+      gap: 1rem calc(1rem + .3vw);
+      position: absolute;
+      opacity: 0.9;
+      //right: -10%;
+      display: flex;
+      *{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: calc(40px + 2.5vw);
+          height: calc(40px + 2.5vw);
+        }
+      }
+      div:nth-child(n+2) {
+        display: none;
+      }
+
+      //-webkit-mask-image:-webkit-gradient(linear, left left, left right, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+      //mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+
     }
   }
 }
@@ -58,17 +84,31 @@
 .container-left {
   //width: calc(100px + 5.5vw);
   //height: calc(100px + 5.5vw);
-  width: 20%;
+  width: 25%;
   height: 100%;
+
 }
+
 .container-middle {
   //width: calc(300px + 5.5vw);
   height: 100%;
-  width: 50%;
+  width: 60%;
 }
+
 .container-right {
   //width: calc(100px + 5.5vw);
   //height: calc(100px + 5.5vw);
   height: 100%;
-  width: 20%;
+  width: 25%;
 }
+
+
+@media (min-width: 640px) {
+
+  //tablet
+  .slider {
+    //height: calc(300px + 5vw);
+  }
+}
+
+@import "../components/weather-slider-desktop.scss";
