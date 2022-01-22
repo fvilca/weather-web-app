@@ -1,0 +1,42 @@
+@import "../variables.scss";
+
+@media (min-width: 640px) {
+  //desktop
+  .slider {
+    //height: calc(200px + 5vw); //cambiar esto en IPAD y DESKTOP
+    
+    .button--svg {}
+
+    .container-spring {
+
+      .spring--left {
+
+        div:nth-child(-n+2) {
+          display: unset;
+        }
+      }
+
+      .spring--middle {}
+
+      .spring--right {
+
+        div:nth-child(n+2) {
+          display: unset;
+        }
+      }
+    }
+
+    .container-left {
+      width: 35%;
+    }
+
+    .container-middle {
+      width: 30%;
+    }
+
+    .container-right {
+      width: 35%;
+    }
+
+  }
+}
