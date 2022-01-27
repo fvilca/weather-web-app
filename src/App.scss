@@ -22,11 +22,8 @@
     "day-shift-widget day-shift-widget"
     "ratio-widget1    ratio-widget1"
     "ratio-widget2    ratio-widget2"
-    ;/*"temp temp"
     "hours            hours"
-    "cities           cities";*/
-
-    //gap: 1rem;
+    ;/*"cities           cities";*/
 }
 
 @media (min-width: 640px) { //tablet
@@ -39,14 +36,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
-      "slider  slider slider"
-      "filter--city      temp-widget filter--date "
+      "slider        slider       slider"
+      "filter--city  temp-widget  filter--date "
       "ratio-widget1 day-shift-widget ratio-widget2"
-      ;/*"temp temp temp"
-      "hours            hours hours"
-      "cities           cities cities";*/
+      "hours         hours        hours"
+      ;/*"cities           cities cities";*/
 
-      //gap: 1rem;
   }
   
 }
@@ -63,9 +58,8 @@
     " . slider  slider   slider . "
     " . filter--city   temp-widget  filter--date ."
     " . ratio-widget1    day-shift-widget    ratio-widget2 ."
-    ;/*" . hours            hours hours ."
-    " . cities           cities cities .";*/
-
+    " . hours            hours hours ."
+    ;/*" . cities           cities cities .";*/
   }
 }
 

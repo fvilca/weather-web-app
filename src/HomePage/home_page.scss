@@ -15,10 +15,10 @@ y cada componente ya tiene caracteristicas de vsuales
 #sectionhours {
   width: 100%;
   grid-area: hours;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: center;
   margin-top: 1rem;
 }
 
@@ -27,6 +27,7 @@ y cada componente ya tiene caracteristicas de vsuales
   height: 1500px;
   grid-area: cities;
   margin-top: 2rem;
+  background-color: black;
 }
 
 .slider {

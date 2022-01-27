@@ -86,15 +86,15 @@ function HomePage() {
       <RatioWidget1 {...currentWeather} />
       <RatioWidget2 {...currentWeather} />
 
-      {/*
+
       <section id="sectionhours">
         <Hours />
       </section>
 
       <section id="sectioncities">
-        {currentLocation && <Cities location={currentLocation} />}
+        {/*currentLocation && <Cities location={currentLocation} />*/}
       </section>
-      */}
+
     </div>
   );
 }
