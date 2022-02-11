@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import "./hours.scss";
 import { useSpring, a, useTransition, config } from 'react-spring'
-import LineChart from '../../components/LineChart'
+import LineChart3 from '../../components/LineChart3'
 
 
 const dataHoursDay = [
-    { hour: "6:00", temp: 10, icon: "sunny", strokeSettings: {
-        stroke: '#939482',
-    }, },
+    {
+        hour: "6:00", temp: 10, icon: "sunny", strokeSettings: {
+            stroke: '#939482',
+        },
+    },
     { hour: "7:00", temp: 11, icon: "sunny" },
     { hour: "8:00", temp: 11, icon: "cloudy_n" },
     { hour: "9:00", temp: 14, icon: "cloudy_d" },
@@ -18,12 +20,19 @@ const dataHoursDay = [
     { hour: "14:00", temp: 17, icon: "cloudy_d" },
     { hour: "15:00", temp: 15, icon: "cloudy_d" },
     { hour: "16:00", temp: 14, icon: "sunny" },
-    { hour: "17:00", temp: 15, icon: "sunny" }
+    { hour: "17:00", temp: 15, icon: "sunny" },
+    {
+        hour: "18:00", temp: 12, icon: "cloudy_n", strokeSettings: {
+            stroke: '#3c423a',
+        },
+    },
 ];
 const dataHoursNight = [
-    { hour: "18:00", temp: 12, icon: "cloudy_n", strokeSettings: {
-        stroke: '#3c423a',
-    }, },
+    {
+        hour: "18:00", temp: 12, icon: "cloudy_n", strokeSettings: {
+            stroke: '#3c423a',
+        },
+    },
     { hour: "19:00", temp: 10, icon: "cloudy_n" },
     { hour: "20:00", temp: 8, icon: "cloudy_n" },
     { hour: "21:00", temp: 8, icon: "cloudy_n" },
@@ -58,7 +67,14 @@ export const Hours = () => {
     return (
         <div className='container--hours'>
 
-            <LineChart dataHoursDay = {dataHoursDay} dataHoursNight={dataHoursNight}/>
+            <div className='title--hours'>
+                <div className='title--text' style={style} > Temperatura de las 24h:<br />
+                    <p> &nbsp; 6am a 17h</p><br />
+                    <p> &nbsp; 6pm a 5am</p>
+                </div>
+            </div>
+
+            <LineChart3 dataHoursDay={dataHoursDay} dataHoursNight={dataHoursNight} />
 
             <div onClick={handleTurnTime} className="bi--option--container">
                 <a.div className="bi--option--circle" style={spring}></a.div>

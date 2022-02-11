@@ -91,9 +91,10 @@ function HomePage() {
         <Hours />
       </section>
 
-      <section id="sectioncities">
-        {/*currentLocation && <Cities location={currentLocation} />*/}
+      {/*<section id="sectioncities">
+        currentLocation && <Cities location={currentLocation} />
       </section>
+      */}
 
     </div>
   );
